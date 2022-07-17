@@ -1,2 +1,2 @@
 # Portfolio
-A web collection
+A web collection of
