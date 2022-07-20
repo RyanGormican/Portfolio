@@ -1,2 +1,2 @@
 # Portfolio
-A web collection of current and
+A web collection of current and upcoming
