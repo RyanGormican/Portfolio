@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.containNotes {
+	
+	padding-right: 15px;
+	padding-left: 15px;
+	min-height: 100vh;
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.deletenotes {
+cursor: pointer;	
+}
+.footnotes
+{
+justify-content: space-between;
+display: flex;
+align-items: center;
+}
+.header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+.listnotes{
+	grid-gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(200px, 1fr)
+	);
+}
+.notes {
+	padding: 1rem;
+	min-height: 170px;
+	display: flex;
+	background-color: #ffff88;
+	border-radius: 10px;
+	justify-content: space-between;
+	white-space: pre-wrap;
+	flex-direction: column;
+}	
+.notes.add {
+	background-color: #d4cdcb;
+}
+.saveNote {
+	border-radius: 15px;
+	padding: 5px 10px 5px 10px;
+	background-color: #e1e1e1;
+	border: none;
+	
+}
+.saveNote:hover {
+	cursor: pointer;
+	background-color: #ededed;
+}
+.searchNotes{
+	align-items: center;	
+	display: flex;
+	background-color: rgb(233, 233, 233);
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 1.5em;
+}
+.searchNotes input{
+	background-color: rgb(233, 233, 233);
+	border: none;
+	width: 100%;
+}
+.searchNotes input:focus{
+	outline: none;
+}
+.setdarkMode{
+background-color:#121212;	
+}
+.setdarkMode h1{
+color: white;	
+}
+span{
+overflow-wrap: break-word;
+}
+textarea {
+	background-color: #d4cdcb;
+	border: none;
+	resize: none;
+}
+textarea:focus {
+	outline: none;
+}
