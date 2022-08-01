@@ -20,9 +20,7 @@ const DenoteProject = ({ noteId, noteText, noteDate, noteColor, removetheNote,se
     <div className='notes' id={noteId} style={{'backgroundColor': noteColors.noteColor }}>
     <span> {noteText } </span>
     <div className='footnotes'>
-      <small> {noteDate} </small>
-     <input type="color" onChange={changeColor} id="noteColorS" name="noteColor"  value={noteColor}/>
-    <button onClick={() => removetheNote(noteId)} className='deletenotes' size='1.3em' > X </button>
+      <small> <a href ="{noteDate}"> Site Link </a> </small>
     </div>
     
     </div>
