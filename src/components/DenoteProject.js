@@ -20,7 +20,7 @@ const DenoteProject = ({ noteId, noteText, noteDate, noteColor, removetheNote,se
     <div className='notes' id={noteId} style={{'backgroundColor': noteColors.noteColor }}>
     <span> {noteText } </span>
     <div className='footnotes'>
-      <small> <a href ='{noteDate}'> Site link </a> </small>
+      <small> <a href ='{noteDate}'> Site Link </a> </small>
     </div>
     
     </div>
