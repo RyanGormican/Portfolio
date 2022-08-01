@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
-import ListNotes from './components/ListNotes';
+import ListProjects from './components/ListProjects';
 import SearchNotes from './components/SearchNotes';
-import NoteHeader from './components/NoteHeader';
+import ProjectHeader from './components/ProjectHeader';
 
 
 const App = () => {
@@ -17,8 +17,8 @@ const App = () => {
         }
     const [darkMode, setdarkMode] = useState(Changed);
   useEffect(() => {
-      const getNotes = JSON.parse(localStorage.getItem('denoted-data'));
-      const getDark = JSON.parse(localStorage.getItem('denoted-data-darkmode'));
+      const getNotes = JSON.parse(localStorage.getItem('ryangormicanportfolio-data'));
+      const getDark = JSON.parse(localStorage.getItem('ryangormicanportfolio-data-darkmode'));
     if (getNotes){
      setNotes(getNotes);   
     }
@@ -58,8 +58,8 @@ const App = () => {
     <div className={`${darkMode && 'setdarkMode'}`}>  
         <div className='containNotes'>
         <NoteHeader toggleDarkMode={setdarkMode} /> 
-        <SearchNotes setSearch={setSearch} />
-        <ListNotes theNotes={notes.filter((note) => note.noteText.toLowerCase().includes(search.toLowerCase()) )} addtheNote={addNote} removetheNote={removeNote} setNotes={setNotes} />
+        <SearchProjects setSearch={setSearch} />
+        <ListProjects theNotes={notes.filter((note) => note.noteText.toLowerCase().includes(search.toLowerCase()) )} addtheNote={addNote} removetheNote={removeNote} setNotes={setNotes} />
         </div>
 </div>
   );
