@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import ListProjects from './components/ListProjects';
-import SearchNotes from './components/SearchNotes';
+import SearchProjects from './components/SearchProjects';
 import ProjectHeader from './components/ProjectHeader';
 
 
