@@ -3,7 +3,7 @@ const SearchProject =({ setSearch }) => {
    return (
    <div className='searchNotes'>
    <input  onChange={(event) => 
-   setSearch(event.target.value)} type='text' placeholder='Type to search for a note...' />
+   setSearch(event.target.value)} type='text' placeholder='Search for a project' />
    </div>
 );
 };
