@@ -1,5 +1,5 @@
 import React from 'react';
-const NoteHeader = ({ toggleDarkMode }) => {
+const ProjectHeader = ({ toggleDarkMode }) => {
     return (
     <div className='header'>
     <h1>DeNoted</h1>
@@ -7,4 +7,4 @@ const NoteHeader = ({ toggleDarkMode }) => {
     </div>
     )
     }
-    export default NoteHeader;
+    export default ProjectHeader;
