@@ -7,4 +7,4 @@ const SearchProject =({ setSearch }) => {
    </div>
 );
 };
-export default SearchNotes;
+export default SearchProject;
