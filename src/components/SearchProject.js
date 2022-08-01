@@ -1,5 +1,5 @@
 import React from 'react';
-const SearchNotes =({ setSearch }) => {
+const SearchProject =({ setSearch }) => {
    return (
    <div className='searchNotes'>
    <input  onChange={(event) => 
