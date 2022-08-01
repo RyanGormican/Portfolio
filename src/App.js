@@ -8,7 +8,11 @@ import ProjectHeader from './components/ProjectHeader';
 const App = () => {
     
             const date = new Date();
-    const [notes, setNotes] = useState([{ noteId: nanoid(),  noteText:'Welcome to DeNoted!', noteDate:date.toLocaleDateString(), noteColor:'#ffff88'}]);
+    const [notes, setNotes] = useState([{ noteId: nanoid(),  noteText:'Denoted - DeNoted is a notes app developed using the React library. Users are able to manage the notes on the page by adding and deleting the notes they want to change. Management of notes also allows the user to change the design of a note by modifying the background color.', noteDate:'https://denoted.vercel.app/', noteColor:'#ffff88'},
+          { noteId: nanoid(),  noteText:'ListLast - ListLast is a to-do list app allowing the user to add, update, and remove tasks from a list. The Bootstrap framework, and React states are utilized in order for users to be able to manage those actions through the buttons on the interface.', noteDate:date.toLocaleDateString(), noteColor:'https://ListLast.vercel.app/'},
+          { noteId: nanoid(),  noteText:'CompScidle is a clone of the popular New York Times game Wordle using the React library. The user has 6 attempts to guess a 5 letter word using the keyboard onscreen or by typing on the keyboard. Words are pulled from a .txt file all centered around program and computer science-related topics.', noteDate:'https://Compscidle.vercel.app/', noteColor:'#ffff88'},
+                                     
+                                       ] );
     const [search, setSearch] = useState(''); 
     var Changed = false;
     if (JSON.parse(localStorage.getItem('denoted-data-darkmode')) === "true")
