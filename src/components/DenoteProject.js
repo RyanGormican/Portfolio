@@ -1,4 +1,4 @@
-const DenoteNote = ({ noteId, noteText, noteDate, noteColor, removetheNote,setNotes, theNotes,}) => {
+const DenoteProject = ({ noteId, noteText, noteDate, noteColor, removetheNote,setNotes, theNotes,}) => {
   var id = {noteId};
   const changeColor = (event) => {
     setNotes(prevState => {
@@ -29,4 +29,4 @@ const DenoteNote = ({ noteId, noteText, noteDate, noteColor, removetheNote,setNo
     );
 };
 
-export default DenoteNote;
+export default DenoteProject;
