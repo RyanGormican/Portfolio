@@ -19,25 +19,40 @@ function App() {
       </Container>
      <Grid container spacing={0.5}>
         <Grid item xs={4}>
-        a
+            <a href = "https://compscidle.vercel.app/">
+                <img src = {Compscidle} width="85%">
+                </img>
+            </a>
         </Grid> 
        <Grid item xs={4}>
-        b
+            <a href = "https://compscidle.vercel.app/">
+                <img src = {Compscidle} width="70%">
+                </img>
+            </a>
         </Grid> 
        <Grid item xs={4}>
-        c
+            <a href = "https://compscidle.vercel.app/">
+                <img src = {Compscidle} width="70%">
+                </img>
+            </a>
         </Grid> 
         <Grid item xs={4}>
-        d
-        </Grid> 
-       <Grid item xs={4}>
-        e
-        </Grid> 
-       <Grid item xs={4}>
-         <img src = {Compscidle} width="70%">
             <a href = "https://compscidle.vercel.app/">
+                <img src = {Compscidle} width="70%">
+                </img>
             </a>
-         </img>
+        </Grid> 
+       <Grid item xs={4}>
+            <a href = "https://compscidle.vercel.app/">
+                <img src = {Compscidle} width="70%">
+                </img>
+            </a>
+        </Grid> 
+       <Grid item xs={4}>
+            <a href = "https://compscidle.vercel.app/">
+                <img src = {Compscidle} width="70%">
+                </img>
+            </a>
         </Grid> 
      </Grid>
 
