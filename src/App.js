@@ -16,10 +16,10 @@ function App() {
       <Container maxWidth="sm" >
          <div className="flex">
 			<a href="https://www.linkedin.com/in/ryangormican/">
-				<Icon icon="mdi:linkedin" color="#0e76a8" width="40" />
+				<Icon icon="mdi:linkedin" color="#0e76a8" width="50" />
 			</a>
 			<a href="https://github.com/RyanGormican/">
-				<Icon icon="mdi:github" color="#e8eaea" width="40" />
+				<Icon icon="mdi:github" color="#e8eaea" width="50" />
 			</a>
 	    </div>
       </Container>
