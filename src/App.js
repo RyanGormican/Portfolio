@@ -3,7 +3,7 @@ import './App.css';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { Icon } from '@iconify/react';
-import {Compscidle} from './images/Compscidle.png'
+import Compscidle from './images/Compscidle.png'
 function App() {
   return (
     <div className="App" >
@@ -34,7 +34,10 @@ function App() {
         e
         </Grid> 
        <Grid item xs={4}>
-        f  
+         <img src = {Compscidle} width="70%">
+            <a href = "https://compscidle.vercel.app/">
+            </a>
+         </img>
         </Grid> 
      </Grid>
 
