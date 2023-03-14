@@ -14,7 +14,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.title{
+    color: white;
+    font-size: calc(10px + 2vmin);
+    font-family: Helvetica;
+    font-style: italic;
+    text-decoration: underline;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

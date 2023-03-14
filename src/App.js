@@ -23,11 +23,14 @@ function App() {
 			</a>
 	    </div>
       </Container>
-     <Grid container spacing={0.5}>
+      <p className="title">
+      Ryan Gormican's Website
+      </p> 
+     <Grid container spacing={0.75}>
         <Grid item xs={4}>
              <Tooltip title="RealDiscuss is a full-stack web application developed using the Next.js framework for the React library. RealDiscuss is a message board app allowing the users after verifying user authentication to manage posts. Users can manage their own posts from the Google Firebase database by either creating a new one or deleting and editing the ones they already have available to them. Users can also manage posts by clicking on a specific post on the index page and on the comments section allowing the user to add comments to specific users' posts. ">
                 <a href = "https://realdiscuss.vercel.app/">
-                    <img src = {Realdiscuss} width="85%">
+                    <img src = {Realdiscuss} width="100%">
                     </img>
                 </a>
             </Tooltip>
@@ -35,7 +38,7 @@ function App() {
        <Grid item xs={4}>
               <Tooltip title="QuotedFor is a web app made using the React library. The web app provides for the user to view a thought-provoking quote on load and through the push of a button. The application for retrieving the quotes for the web app was fetched using API calls.">
                 <a href = "https://quotedfor.vercel.app/">
-                    <img src = {Quotedfor} width="85%">
+                    <img src = {Quotedfor} width="100%">
                     </img>
                 </a>
             </Tooltip>
@@ -43,7 +46,7 @@ function App() {
        <Grid item xs={4}>
                <Tooltip title="MovieSight is a front-end web app created with the Vue framework. The application allows the user to view details on the latest popular movies. With the integration of API calls, the user gets displayed on the home page a featured movie along with a list of movies and their descriptions. Users can then click on either the view more for the featured movie or just on the movie itself for the list of movies and get taken to a vision page in order to gain more details about the movie such as its runtime and the country of origin for the film. ">
                 <a href = "https://moviesight.vercel.app/">
-                    <img src = {Moviesight} width="85%">
+                    <img src = {Moviesight} width="100%">
                     </img>
                 </a>
             </Tooltip>
@@ -51,7 +54,7 @@ function App() {
         <Grid item xs={4}>
              <Tooltip title="ListLast is a to-do list app allowing the user to add, update, and remove tasks from a list. The Bootstrap framework, and React states are utilized in order for users to be able to manage those actions through the buttons on the interface.">
                 <a href = "https://listlast.vercel.app/">
-                    <img src = {Listlast} width="85%">
+                    <img src = {Listlast} width="100%">
                     </img>
                 </a>
             </Tooltip>
@@ -59,7 +62,7 @@ function App() {
        <Grid item xs={4}>
              <Tooltip title="DeNoted is a notes app developed using React and an assortment of web technologies. Users are able to manage the notes on the page by adding and deleting the notes they want to change. Management of notes also allows the user to change the design of a note by modifying the background color.">
                 <a href = "https://denoted.vercel.app/">
-                    <img src = {Denoted} width="85%">
+                    <img src = {Denoted} width="100%">
                     </img>
                 </a>
             </Tooltip>
@@ -67,7 +70,7 @@ function App() {
        <Grid item xs={4}>
             <Tooltip title="CompScidle is a clone of the popular New York Times game Wordle using the React library. The user has 6 attempts to guess a 5 letter word using the keyboard onscreen or by typing on the keyboard. Words are pulled from a .txt file all centered around program and computer science-related topics.">
                 <a href = "https://compscidle.vercel.app/">
-                    <img src = {Compscidle} width="85%">
+                    <img src = {Compscidle} width="100%">
                     </img>
                 </a>
             </Tooltip>
