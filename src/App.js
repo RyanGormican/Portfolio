@@ -3,10 +3,11 @@ import './App.css';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { Icon } from '@iconify/react';
+import {Compscidle} from './images/Compscidle.png'
 function App() {
   return (
-    <div className="App">
-      <Container maxWidth="sm">
+    <div className="App" >
+      <Container maxWidth="sm" >
          <div className="flex">
 			<a href="https://www.linkedin.com/in/ryangormican/">
 				<Icon icon="mdi:linkedin" color="#0e76a8" width="40" />
