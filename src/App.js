@@ -1,22 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Grid from '@mui/material/Grid';
+import { Icon } from '@iconify/react';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+     <Grid container spacing={0.5}>
+        <Grid item xs={4}>
+        a
+        </Grid> 
+       <Grid item xs={4}>
+        b
+        </Grid> 
+       <Grid item xs={4}>
+        c
+        </Grid> 
+        <Grid item xs={4}>
+        d
+        </Grid> 
+       <Grid item xs={4}>
+        e
+        </Grid> 
+       <Grid item xs={4}>
+        f  
+        </Grid> 
+     </Grid>
+
       </header>
     </div>
   );
