@@ -24,7 +24,7 @@ function App() {
 	    </div>
       </Container>
       <p className="title">
-      Ryan Gormican's Website
+      Ryan Gormican's Portfolio
       </p> 
      <Grid container spacing={0.75}>
         <Grid item xs={4}>
