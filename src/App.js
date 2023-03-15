@@ -37,7 +37,7 @@ function App() {
       <p className="title">
       Ryan Gormican's Portfolio
       </p> 
-     <Grid container spacing={0.8}>
+     <Grid container spacing={0.75}>
         {shuffledProjects.map((project, index) => (
             <Grid item xs={4}>
                  <Tooltip title={project.description}>
