@@ -43,9 +43,7 @@ function App() {
         {shuffledProjects.map((project, index) => (
             <Grid item xs={4}>
                  <Tooltip title={project.description}>
-                    <a href = {project.link}>
-                        <img src = {project.name} width="100%">
-                        </img>
+                    <a href = {project.link} rel="prefetch">
                     </a>
                 </Tooltip>
             </Grid> 
