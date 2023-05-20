@@ -42,12 +42,23 @@
 .App-link {
   color: #61dafb;
 }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+
+.other {
+  margin-top: 5px;
+  font-size: 14px;
 }
