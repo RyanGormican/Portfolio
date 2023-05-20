@@ -26,7 +26,23 @@ function App() {
     const shuffledProjects = shuffle(projects);
   return (
     <div className="App" >
-      <Container maxWidth="sm" >
+
+      <p className="title">
+      Ryan Gormican's Portfolio
+      </p> 
+     <Grid container spacing={0.75}>
+        {shuffledProjects.map((project, index) => (
+            <Grid item xs={4}>
+                 <Tooltip title={project.description}>
+                    <a href = {project.link}>
+			<img src = {project.name} width="100%">
+                        </img>
+                    </a>
+                </Tooltip>
+            </Grid> 
+        ))}
+     </Grid>
+       <Container maxWidth="sm" >
          <div className="row">
     <div className="item">
         <a href="https://www.linkedin.com/in/ryangormican/">
@@ -50,21 +66,6 @@ function App() {
     </div>
 </div>
       </Container>
-      <p className="title">
-      Ryan Gormican's Portfolio
-      </p> 
-     <Grid container spacing={0.75}>
-        {shuffledProjects.map((project, index) => (
-            <Grid item xs={4}>
-                 <Tooltip title={project.description}>
-                    <a href = {project.link}>
-			<img src = {project.name} width="100%">
-                        </img>
-                    </a>
-                </Tooltip>
-            </Grid> 
-        ))}
-     </Grid>
     </div>
   );
 }
