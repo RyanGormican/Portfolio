@@ -27,22 +27,24 @@ function App() {
   return (
     <div className="App" >
       <Container maxWidth="sm" >
-        <div className="flex">
-                    <a href="https://www.linkedin.com/in/ryangormican/">
-                        <Icon icon="mdi:linkedin" color="#0e76a8" width="50" />
-                    </a>
-                    <a href="https://github.com/RyanGormican/">
-                        <Icon icon="mdi:github" color="#e8eaea" width="50" />
-                    </a>
-                    <div className="contact-box">
-                        <Icon icon="mdi:email" color="#e8eaea" width="50" />
-                        <p className="other">ryan.gormican@gmail.com</p>
-                    </div>
-                    <div className="contact-box">
-                        <Icon icon="ic:baseline-phone" color="#e8eaea" width="50" />
-                        <p className="other">(306) 520-7738</p>
-                    </div>
-                </div>
+         <div className="flex">
+         <span>
+			<a href="https://www.linkedin.com/in/ryangormican/">
+				<Icon icon="mdi:linkedin" color="#0e76a8" width="50" />
+			</a>
+			<a href="https://github.com/RyanGormican/">
+				<Icon icon="mdi:github" color="#e8eaea" width="50" />
+			</a>
+            <div> 
+            <a href="mailto:ryan.gormican@gmail.com">
+                <Icon icon="mdi:email" color="#e8eaea" width="50" />
+                <p className="other"> ryan.gormican@gmail.com </p>
+            </a>
+            </div>
+                <Icon icon="ic:baseline-phone" color="#e8eaea" width="50" />
+                <p className="other">(306) 520-7738</p>
+        </span>
+	    </div>
       </Container>
       <p className="title">
       Ryan Gormican's Portfolio
