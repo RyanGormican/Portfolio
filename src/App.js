@@ -34,6 +34,15 @@ function App() {
 			<a href="https://github.com/RyanGormican/">
 				<Icon icon="mdi:github" color="#e8eaea" width="50" />
 			</a>
+            <a href="mailto:ryan.gormican@gmail.com">
+                <Icon icon="mdi:email" color="#e8eaea" width="50" />
+                <p className="other"> ryan.gormican@gmail.com </p>
+            </a>
+            <div>
+                <Icon icon="ic:baseline-phone" color="#e8eaea" width="50" />
+                <p className="other">(306) 520-7738</p>
+            </div>
+            
 	    </div>
       </Container>
       <p className="title">

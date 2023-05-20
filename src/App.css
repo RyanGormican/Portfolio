@@ -21,6 +21,13 @@
     font-style: italic;
     text-decoration: underline;
 }
+.other{
+  color: white;
+    font-size: calc(2px + 2vmin);
+    font-family: Helvetica;
+    font-style: italic;
+    text-decoration: underline;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
