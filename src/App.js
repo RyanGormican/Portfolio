@@ -35,12 +35,34 @@ function App() {
       </p>
    </div>
     <div className ="button-container">
-    <Button variant="contained" color="primary" onClick={()=> { setView('projects');}}>
-			Projects
-	</Button>
-    <Button variant="contained" color="primary" onClick={()=> { setView('links');}}>
-			Links
-	</Button>
+    <div className="links-container">
+     <Container maxWidth="sm" >
+         <div className="row">
+    <div className="item">
+        <a href="https://www.linkedin.com/in/ryangormican/">
+            <Icon icon="mdi:linkedin" color="#0e76a8" width="50" />
+        </a>
+        <a href="https://github.com/RyanGormican/">
+            <Icon icon="mdi:github" color="#e8eaea" width="50" />
+        </a>
+    </div>
+        </div>
+        <div className="row">
+    <div className="item">
+        <a href="mailto:ryan.gormican@gmail.com">
+            <Icon icon="mdi:email" color="#e8eaea" width="100%" height="100%"/>
+        </a>
+        <p className="other">ryan.gormican@gmail.com</p>
+    </div>
+         </div>
+        <div className="row">
+    <div className="item">
+        <Icon icon="ic:baseline-phone" color="#e8eaea" width="10%" height="10%" />
+        <p className="other">(306) 520-7738</p>
+    </div>
+        </div>
+      </Container>
+    </div>
      </div>
      <div className="content-container">
      {view === 'home' ? (
@@ -62,39 +84,6 @@ function App() {
         ))}
      </Grid>
     ) : null }
-    {view === 'links' ? (
-        <Container maxWidth="sm" >
-         <div className="row">
-    <div className="item">
-        <a href="https://www.linkedin.com/in/ryangormican/">
-            <Icon icon="mdi:linkedin" color="#0e76a8" width="50" />
-        </a>
-    </div>
-        </div>
-        <div className="row">
-    <div className="item">
-        <a href="https://github.com/RyanGormican/">
-            <Icon icon="mdi:github" color="#e8eaea" width="50" />
-        </a>
-    </div>
-        </div>
-        <div className="row">
-    <div className="item">
-        <a href="mailto:ryan.gormican@gmail.com">
-            <Icon icon="mdi:email" color="#e8eaea" width="50" />
-            <p className="other">ryan.gormican@gmail.com</p>
-        </a>
-    </div>
-         </div>
-        <div className="row">
-    <div className="item">
-        <Icon icon="ic:baseline-phone" color="#e8eaea" width="50" />
-        <p className="other">(306) 520-7738</p>
-    </div>
-        </div>
-      </Container>
-
-    ): null}
         </div>
 
 
