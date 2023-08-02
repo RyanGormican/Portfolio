@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   padding-left: 20px;
+  z-index:2;
 }
 
 
@@ -30,16 +31,18 @@
 /* Style for the button container */
 .button-container {
   position: fixed;
-  top: 10%; /* Adjust the top margin based on the title container's height */
+  top: 10vh; /* Adjust the top margin based on the title container's height */
   left: 0;
   width: 10%;
-  height: 90%; /* Adjust the height based on the title container's height */
+  height: 90vh; /* Adjust the height based on the title container's height */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 20px;
   background-color: #282c34;
+  overflow-y: auto;
+  z-index: 1;
 }
 
 
@@ -56,12 +59,11 @@
 }
 
 .content-container {
-  position: absolute;
+  position: fixed;
   left: 10%; 
-  top: 10%;
+  top: 10vh;
   width: 90%; 
   height: 90vh;
-  padding: 20px;
   background-color: #282c34;
   z-index:0;
 }
