@@ -33,12 +33,13 @@ function App() {
       <p className="title">
       Ryan Gormican's Portfolio
       </p>
-    <div>
+   
     <div className ="button-container">
     <Button variant="contained" color="primary" onClick={()=> { setView('projects');}}>
 			Projects
 	</Button>
-        <div>
+     </div>
+     <div className="content-container">
      {view === 'home' ? (
      <p className= "title">
      Welcome!
@@ -59,7 +60,6 @@ function App() {
      </Grid>
     ) : null }
         </div>
-    </div>
 
 
        <Container maxWidth="sm" >
