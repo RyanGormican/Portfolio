@@ -34,11 +34,10 @@ function App() {
       Ryan Gormican's Portfolio
       </p>
     <div>
-    <div>
+    <div className ="button-container">
     <Button variant="contained" color="primary" onClick={()=> { setView('projects');}}>
 			Projects
 	</Button>
-    </div>
         <div>
      {view === 'home' ? (
      <p className= "title">
