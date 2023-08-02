@@ -3,6 +3,7 @@ import './App.css';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
 import { Icon } from '@iconify/react';
 import Compscidle from './images/Compscidle.png'
 import Denoted from './images/Denoted.png'
@@ -12,6 +13,7 @@ import Moviesight from './images/Moviesight.png'
 import Realdiscuss from './images/Realdiscuss.png'
 import Budgetbook from './images/Budgetbook.png'
 import { shuffle } from 'lodash';
+import React, { useState, useContext } from 'react';
 
 function App() {
     const projects = [
@@ -24,13 +26,27 @@ function App() {
         {name: Compscidle, description: "CompScidle is a clone of the popular New York Times game Wordle using the React library. The user has 6 attempts to guess a 5 letter word using the keyboard onscreen or by typing on the keyboard. Words are pulled from a .txt file all centered around program and computer science-related topics.", link: "https://compscidle.vercel.app/"},
     ];
     const shuffledProjects = shuffle(projects);
+    const [view, setView] = useState('home');
   return (
     <div className="App" >
 
       <p className="title">
       Ryan Gormican's Portfolio
-      </p> 
-     <Grid container spacing={0.75}>
+      </p>
+    <div>
+    <div>
+    <Button variant="contained" color="primary" onClick={()=> { setView('projects');}}>
+			Projects
+	</Button>
+    </div>
+        <div>
+     {view === 'home' ? (
+     <p className= "title">
+     Welcome!
+     </p> 
+     ) : null }
+     {view === 'projects' ? (
+      <Grid container spacing={0.75}>
         {shuffledProjects.map((project, index) => (
             <Grid item xs={4}>
                  <Tooltip title={project.description}>
@@ -42,6 +58,11 @@ function App() {
             </Grid> 
         ))}
      </Grid>
+    ) : null }
+        </div>
+    </div>
+
+
        <Container maxWidth="sm" >
          <div className="row">
     <div className="item">
