@@ -29,14 +29,17 @@ function App() {
     const [view, setView] = useState('home');
   return (
     <div className="App" >
-
+    <div className="title-container">
       <p className="title">
       Ryan Gormican's Portfolio
       </p>
-   
+   </div>
     <div className ="button-container">
     <Button variant="contained" color="primary" onClick={()=> { setView('projects');}}>
 			Projects
+	</Button>
+    <Button variant="contained" color="primary" onClick={()=> { setView('links');}}>
+			Links
 	</Button>
      </div>
      <div className="content-container">
@@ -59,10 +62,8 @@ function App() {
         ))}
      </Grid>
     ) : null }
-        </div>
-
-
-       <Container maxWidth="sm" >
+    {view === 'links' ? (
+        <Container maxWidth="sm" >
          <div className="row">
     <div className="item">
         <a href="https://www.linkedin.com/in/ryangormican/">
@@ -86,6 +87,12 @@ function App() {
     </div>
 </div>
       </Container>
+
+    ): null}
+        </div>
+
+
+   
     </div>
   );
 }
