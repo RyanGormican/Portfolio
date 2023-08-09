@@ -12,6 +12,7 @@ import Quotedfor from './images/Quotedfor.png'
 import Moviesight from './images/Moviesight.png'
 import Realdiscuss from './images/Realdiscuss.png'
 import Budgetbook from './images/Budgetbook.png'
+import CardCache from './images/CardCache.png'
 import { shuffle } from 'lodash';
 import React, { useState, useContext } from 'react';
 
