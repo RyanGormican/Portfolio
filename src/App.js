@@ -79,6 +79,7 @@ function App() {
      </p> 
      ) : null }
      {view === 'projects' ? (
+	  <div>
 	      {featuredProject && (
             <Grid container spacing={0.75}>
               <Grid item xs={8}>
@@ -87,9 +88,7 @@ function App() {
                 </a>
               </Grid>
               <Grid item xs={4}>
-                <Tooltip title={featuredProject.description}>
                   <p>{featuredProject.description}</p>
-                </Tooltip>
               </Grid>
             </Grid>
           )}
@@ -105,6 +104,7 @@ function App() {
             </Grid> 
         ))}
      </Grid>
+	     </div>
     ) : null }
         </div>
 
