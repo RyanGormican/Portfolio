@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Tooltip from '@mui/material/Tooltip';
@@ -88,7 +89,9 @@ function App() {
                 </a>
               </Grid>
               <Grid item xs={4}>
-                  <p>{featuredProject.description}</p>
+	    <Typography variant="body1" style={{ color: 'white' }}>
+                  {featuredProject.description}
+	    </Typography>
               </Grid>
             </Grid>
           )}
