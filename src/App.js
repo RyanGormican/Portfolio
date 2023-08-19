@@ -32,7 +32,7 @@ function App() {
     const featuredProjectLink = "https://cardcache.vercel.app/"
     const shuffledProjects = shuffle(projects);
     const featuredProject = shuffledProjects.find(project => project.link === featuredProjectLink);
-    const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectName);
+    const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
 
     const [view, setView] = useState('projects');
   return (
