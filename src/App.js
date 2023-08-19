@@ -29,10 +29,10 @@ function App() {
         {name: Denoted, description: "DeNoted is a notes app developed using React and an assortment of web technologies. Users are able to manage the notes on the page by adding and deleting the notes they want to change. Management of notes also allows the user to change the design of a note by modifying the background color.", link: "https://denoted.vercel.app/"},
         {name: Compscidle, description: "CompScidle is a clone of the popular New York Times game Wordle using the React library. The user has 6 attempts to guess a 5 letter word using the keyboard onscreen or by typing on the keyboard. Words are pulled from a .txt file all centered around program and computer science-related topics.", link: "https://compscidle.vercel.app/"},
     ];
-    const featuredProjectName = "CardCache.png"
+    const featuredProjectLink = "https://cardcache.vercel.app/"
     const shuffledProjects = shuffle(projects);
-    const featuredProject = shuffledProjects.find(project => project.name === featuredProjectName);
-    const otherProjects = shuffledProjects.filter(project => project.name !== featuredProjectName);
+    const featuredProject = shuffledProjects.find(project => project.link === featuredProjectLink);
+    const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectName);
 
     const [view, setView] = useState('projects');
   return (
