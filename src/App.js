@@ -13,11 +13,13 @@ import Moviesight from './images/Moviesight.png'
 import Realdiscuss from './images/Realdiscuss.png'
 import Budgetbook from './images/Budgetbook.png'
 import CardCache from './images/CardCache.png'
+import GlobeGlance from './images/GlobeGlance.png'
 import { shuffle } from 'lodash';
 import React, { useState, useContext } from 'react';
 
 function App() {
     const projects = [
+	{name: GlobeGlance, description: "GlobeGlance is a front-end web app for obtaining locational data. Users are able to input the search of a location in the world and be given a range of formulated data about that place done using multiple API calls.", link: "https://globeglance.vercel.app/"},    
 	{name: CardCache, description: "CardCache is a full-stack web application based on file management. It offers users the ability to store and organize an array of files within their associated accounts, similar to the functionalities provided by Google Drive. The card refers to folder capabilities, allowing users to structure and manage their files efficiently.", link: "https://cardcache.vercel.app/"},
 	{name: Budgetbook, description: "BudgetBook is a react app designed for managing expenses. Users are able to manage a list of costs by way of add and delete buttons. They can also modify the budget for the expense list to keep track of how much budget is remaining in relation to how much the total expenses in the expenses list total up to. As well, one can add tags to their costs in order to figure out their total along with what percentage of their budget is associated with a specific category.", link: "https://budget-book.vercel.app"},
         {name: Realdiscuss, description: "RealDiscuss is a full-stack web application developed using the Next.js framework for the React library. RealDiscuss is a message board app allowing the users after verifying user authentication to manage posts. Users can manage their own posts from the Google Firebase database by either creating a new one or deleting and editing the ones they already have available to them. Users can also manage posts by clicking on a specific post on the index page and on the comments section allowing the user to add comments to specific users' posts.", link: "https://realdiscuss.vercel.app/"},
