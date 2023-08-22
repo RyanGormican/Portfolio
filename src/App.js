@@ -112,7 +112,7 @@ switch(tag){
                 </a>
               </Grid>
               <Grid item xs={4}>
-	    <Typography variant="body1" style={{ color: 'white' }}>
+	    <Typography variant="body1" style={{ color: 'white', fontSize: '1.65vw' }}>
                   {featuredProject.description}
                   <br />
                   {featuredProject.tags.map((tag,index)=> (
