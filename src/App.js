@@ -94,9 +94,9 @@ function App() {
                   {featuredProject.description}
                   <br />
                   {featuredProject.tags.map((tag,index)=> (
-                  <span key={index} className="tag">
+                  <Tag key={index} color="gold">
                   {tag}
-                  </span>
+                  </Tag>
                   ))}
 	    </Typography>
               </Grid>
