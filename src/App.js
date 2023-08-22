@@ -20,6 +20,28 @@ import React, { useState, useContext } from 'react';
 import {Tag} from 'antd';
 
 function App() {
+const getColor = (tag)=>{
+switch(tag){
+    case "CSS":
+    return "light-blue";
+    case "Databases":
+    return "cyan";
+    case "Full-Stack Development":
+    return "red";
+    case "Google Firebase":
+    return "volcano";
+    case "HTML":
+    return "magenta";
+    case "Javascript":
+    return "orange";
+    case "React.js":
+    return "green";
+    case "Web Development":
+    return "gold";
+
+}
+
+};
     const projects = [
 	{name: GlobeGlance, description: "GlobeGlance is a front-end web app for obtaining locational data such as weather. Users are able to input the search of a location in the world and be given a range of formulated data about that place done using multiple API calls.", link: "https://globeglance.vercel.app/",tags:["React.js","Web Development"]},    
 	{name: CardCache, description: "CardCache is a full-stack web application based on file management. It offers users the ability to store and organize an array of files within their associated accounts, similar to the functionalities provided by Google Drive. The card refers to folder capabilities, allowing users to structure and manage their files efficiently.", link: "https://cardcache.vercel.app/", tags:["React.js","Web Development"]},
@@ -94,7 +116,7 @@ function App() {
                   {featuredProject.description}
                   <br />
                   {featuredProject.tags.map((tag,index)=> (
-                  <Tag key={index} color="gold">
+                  <Tag key={index} color={getColor(tag)}>
                   {tag}
                   </Tag>
                   ))}
