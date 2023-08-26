@@ -16,7 +16,7 @@ import Budgetbook from './images/Budgetbook.png'
 import CardCache from './images/CardCache.png'
 import GlobeGlance from './images/GlobeGlance.png'
 import { shuffle } from 'lodash';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {Tag} from 'antd';
 import axios from 'axios';
 function App() {
@@ -65,16 +65,38 @@ switch(tag){
     suggestion: '',
     date: new Date().toISOString(),
     });
-
+    const [suggestions, setSuggestions] = useState([]);
     const handleSuggestionChange = (field, value)=>{
         setSuggestion(prevSuggestion => ({
         ...prevSuggestion,
         [field]:value,
         }));
     };
+    useEffect(() => {
+    async function fetchSuggestions() {
+        try {
+            const response = await axios.get('/api/suggestions/get-suggestions');
+            setSuggestions(response.data);
+        } catch (error) {
+            console.error('Error fetching suggestiongs:', error);
+        }
+    }
+    fetchSuggestions();
+    }, []);
     const submitSuggestion = async () => {
     try {
-        await axios.post('/api/suggestions/add-suggestion',suggestion);
+     if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
+     return;
+     }
+     const sanitizedName = suggestion.name.trim();
+      const sanitizedTopic = suggestion.topic.trim();
+        const sanitizedSuggestion = suggestion.suggestion.trim();
+    const response = await axios.post('/api/suggestions/add-suggestion',{
+    ...suggestion,
+    name: sanitizedName,
+    topic: sanitizedSuggestion,
+    suggestion:sanitizedSuggestion,
+    });
         setSuggestion({
          name : 'Anonymous',
     topic: '',
@@ -173,8 +195,8 @@ switch(tag){
     ) : null }
  {view === 'suggestions' ? (
 
- <div>
-    <Typography variant="52" style={{color: 'white'}}>
+ <div className="centered">
+    <Typography variant="h2" style={{color: 'white'}}>
     Want to give feedback? Leave me a suggestion!
     </Typography>
     <div className="suggestion-form">
@@ -191,6 +213,21 @@ switch(tag){
             <input type="text" id="suggestion" value={suggestion.suggestion} onChange={e => handleSuggestionChange('suggestion',e.target.value)}/>
         </div>
     <Button style={{ color: 'white' }} onClick={submitSuggestion}> Submit </Button>
+    </div>
+    <div className="suggestions-list">
+        <Typography variant="h2" style={{color: 'white'}}>
+            Suggestions:
+        </Typography>
+        <ul>
+        {suggestions?.map((suggestion,index) =>(
+            <li key={index}>
+            <p> Name: {suggestion.name} </p>
+            <p> Topic: {suggestion.topic} </p>
+            <p> Suggestion: {suggestion.suggestion} </p>
+            <p>Date: {new Date(suggestion.date).toLocaleString()}</p>
+            </li>
+        ))}
+        </ul>
     </div>
     </div>
  ) : null }
