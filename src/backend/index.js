@@ -4,7 +4,9 @@ const suggestionsRoutes = require('./suggestions');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://ryangormicanportfoliohub.vercel.app'
+}));
 app.use(express.json());
 
 app.use('/app/suggestions', suggestionsRoutes);
