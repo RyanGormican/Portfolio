@@ -181,7 +181,7 @@ switch(tag){
           )}
       <Grid container spacing={0.75}>
         {otherProjects.map((project, index) => (
-            <Grid item xs={4}>
+            <Grid item xs={4} key={index}>
                  <Tooltip title={project.description}>
                     <a href = {project.link}>
 			<img src = {project.name} width="100%">
