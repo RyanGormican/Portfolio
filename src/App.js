@@ -219,7 +219,7 @@ switch(tag){
             Suggestions:
         </Typography>
         <ul>
-        {suggestions?.map((suggestion,index) =>(
+        {suggestions && Array.isArray(suggestions) && suggestions.map((suggestion,index) =>(
             <li key={index}>
             <p> Name: {suggestion.name} </p>
             <p> Topic: {suggestion.topic} </p>
