@@ -17,5 +17,4 @@ const PORT = process.env.POSTGRES_PORT || 5000;
 
 app.listen(PORT, () => {
   console.log("Server is listening on port", PORT);
-
 });
