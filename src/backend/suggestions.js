@@ -15,4 +15,15 @@ router.post('/add-suggestion', async (req,res) => {
 	}
 });
 
+router.post('/get-suggestions', async(req,res)=> {
+	try {
+	const query = 'SELECT * from suggestions';
+	const result = await pool.query(query);
+	res.status(200).json(results.rows);
+	} catch (error) {
+	console.error('Error fetching suggestions:', error);
+	res.status(500).json({error: 'An error occured'});
+	}
+});
+
 module.exports = router
