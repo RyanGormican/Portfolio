@@ -201,15 +201,15 @@ switch(tag){
     </Typography>
     <div className="suggestion-form">
         <div className="suggestion-input">
-            <label htmlFor="Name"> Name: </label>
+            <label className="text" htmlFor="Name"> Name: </label>
             <input type="text" id="name" value={suggestion.name} onChange={e => handleSuggestionChange('name',e.target.value)}/>
         </div>
         <div className="suggestion-input">
-            <label htmlFor="Topic"> Topic: </label>
+            <label className="text" htmlFor="Topic"> Topic: </label>
             <input type="text" id="topic" value={suggestion.topic} onChange={e => handleSuggestionChange('topic',e.target.value)}/>
         </div>
         <div className="suggestion-input">
-            <label htmlFor="Suggestion"> Suggestion: </label>
+            <label className="text"htmlFor="Suggestion"> Suggestion: </label>
             <input type="text" id="suggestion" value={suggestion.suggestion} onChange={e => handleSuggestionChange('suggestion',e.target.value)}/>
         </div>
     <Button style={{ color: 'white' }} onClick={submitSuggestion}> Submit </Button>
