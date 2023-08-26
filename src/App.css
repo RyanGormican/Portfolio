@@ -101,7 +101,12 @@ width: 100%;
 .item:last-child {
   margin-right: 0;
 }
-
+.suggestion-form {
+	text-align:center;
+	justify-content:center;
+	flex-direction:column;
+	display:flex;
+}
 .other {
   margin-top: 5px;
   font-size: 14px;
