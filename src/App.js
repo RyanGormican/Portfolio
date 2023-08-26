@@ -197,7 +197,7 @@ switch(tag){
 
  <div className="centered">
     <Typography variant="h2" style={{color: 'white'}}>
-    Want to give feedback? Leave me a suggestion!
+    Want to give some feedback? Leave me a suggestion!
     </Typography>
     <div className="suggestion-form">
         <div className="suggestion-input">
