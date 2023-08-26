@@ -15,7 +15,7 @@ router.post('/add-suggestion', async (req,res) => {
 	}
 });
 
-router.post('/get-suggestions', async(req,res)=> {
+router.get('/get-suggestions', async(req,res)=> {
 	try {
 	const query = 'SELECT * from suggestions';
 	const result = await pool.query(query);

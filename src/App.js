@@ -75,7 +75,7 @@ switch(tag){
     useEffect(() => {
     async function fetchSuggestions() {
         try {
-            const response = await axios.get('https://ryangormicanportfoliohub.vercel.app/app/suggestions/get-suggestions');
+            const response = await axios.get('/app/suggestions/get-suggestions');
             setSuggestions(response.data);
         } catch (error) {
             console.error('Error fetching suggestiongs:', error);
@@ -91,7 +91,7 @@ switch(tag){
      const sanitizedName = suggestion.name.trim();
       const sanitizedTopic = suggestion.topic.trim();
         const sanitizedSuggestion = suggestion.suggestion.trim();
-    const response = await axios.post('https://ryangormicanportfoliohub.vercel.app/app/suggestions/add-suggestion',{
+    const response = await axios.post('/app/suggestions/add-suggestion',{
     ...suggestion,
     name: sanitizedName,
     topic: sanitizedSuggestion,
