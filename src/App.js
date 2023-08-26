@@ -67,6 +67,12 @@ switch(tag){
       </p>
    </div>
     <div className ="button-container">
+    <div> 
+    <Button  style={{ color: 'white' }} onClick={() => setView('projects')}> Projects  </Button>
+    </div>
+    <div> 
+    <Button  style={{ color: 'white' }} onClick={() => setView('suggestions')}> Suggestions  </Button>
+    </div>
     <div className="links-container">
      <Container maxWidth="sm" >
          <div className="row">
@@ -138,6 +144,7 @@ switch(tag){
      </Grid>
 	     </div>
     ) : null }
+ 
         </div>
 
 
