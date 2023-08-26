@@ -18,7 +18,7 @@ import GlobeGlance from './images/GlobeGlance.png'
 import { shuffle } from 'lodash';
 import React, { useState, useContext } from 'react';
 import {Tag} from 'antd';
-
+import axios from 'axios';
 function App() {
 const getColor = (tag)=>{
 switch(tag){
@@ -59,6 +59,33 @@ switch(tag){
     const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
 
     const [view, setView] = useState('projects');
+    const [suggestion, setSuggestion] = useState({
+    name : 'Anonymous',
+    topic: '',
+    suggestion: '',
+    date: new Date().toISOString(),
+    });
+
+    const handleSuggestionChange = (field, value)=>{
+        setSuggestion(prevSuggestion => ({
+        ...prevSuggestion,
+        [field]:value,
+        }));
+    };
+    const submitSuggestion = async () => {
+    try {
+        await axios.post('/api/suggestions/add-suggestion',suggestion);
+        setSuggestion({
+         name : 'Anonymous',
+    topic: '',
+    suggestion: '',
+    date: new Date().toISOString(),
+    });
+    } catch ( error) {
+    console.error('Error submitting suggestion:', error);
+    }
+
+    };
   return (
     <div className="App" >
     <div className="title-container">
@@ -144,7 +171,20 @@ switch(tag){
      </Grid>
 	     </div>
     ) : null }
- 
+ {view === 'suggestions' ? (
+
+ <div>
+    <Typography variant="52" style={{color: 'white'}}>
+    Want to give feedback? Leave me a suggestion!
+    </Typography>
+    <div className="suggestion-form">
+    <div className="suggestion-input">
+    <label htmlFor="Name"> Name: </label>
+    <input type="text" id="name" value={suggestion.name} onChange={e => handleSuggestionChange('name',e.target.value)}/>
+ </div>
+ </div>
+ </div>
+ ) : null }
         </div>
 
 
