@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -16,7 +15,7 @@ import Budgetbook from './images/Budgetbook.png'
 import CardCache from './images/CardCache.png'
 import GlobeGlance from './images/GlobeGlance.png'
 import { shuffle } from 'lodash';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState,  useEffect } from 'react';
 import {Tag} from 'antd';
 import axios from 'axios';
 function App() {
@@ -38,7 +37,8 @@ switch(tag){
     return "green";
     case "Web Development":
     return "gold";
-
+    default:
+    return "gray"; 
 }
 
 };
@@ -94,7 +94,7 @@ switch(tag){
     const response = await axios.post('https://portfolio-backend-ryangormican.vercel.app/suggestions/add-suggestion',{
     ...suggestion,
     name: sanitizedName,
-    topic: sanitizedSuggestion,
+    topic: sanitizedTopic,
     suggestion:sanitizedSuggestion,
     });
         setSuggestion({
@@ -185,7 +185,7 @@ switch(tag){
             <Grid item xs={4} key={index}>
                  <Tooltip title={project.description}>
                     <a href = {project.link}>
-			<img src = {project.name} width="100%">
+			<img src = {project.name} alt={project.name} width="100%">
                         </img>
                     </a>
                 </Tooltip>
