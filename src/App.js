@@ -66,7 +66,7 @@ switch(tag){
     suggestion: '',
     date: new Date().toISOString(),
     });
-    const [suggestions, setSuggestions] = useState([]);
+ const [suggestions, setSuggestions] = useState(suggestionsData);
     const handleSuggestionChange = (field, value)=>{
         setSuggestion(prevSuggestion => ({
         ...prevSuggestion,
