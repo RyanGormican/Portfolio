@@ -84,28 +84,30 @@ switch(tag){
     fetchSuggestions();
     }, []);
     const submitSuggestion = async () => {
-    try {
-     if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
-     return;
-     }
-     const sanitizedName = suggestion.name.trim();
-      const sanitizedTopic = suggestion.topic.trim();
-        const sanitizedSuggestion = suggestion.suggestion.trim();
-    const response = await axios.post('https://portfolio-backend-ryangormican.vercel.app/suggestions/add-suggestion',{
-    ...suggestion,
-    name: sanitizedName,
-    topic: sanitizedTopic,
-    suggestion:sanitizedSuggestion,
-    });
-        setSuggestion({
-         name : 'Anonymous',
-    topic: '',
-    suggestion: '',
-    date: new Date().toISOString(),
-    });
-    } catch ( error) {
-    console.error('Error submitting suggestion:', error);
+  try {
+    if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
+      return;
     }
+    const sanitizedName = suggestion.name.trim();
+    const sanitizedTopic = suggestion.topic.trim();
+    const sanitizedSuggestion = suggestion.suggestion.trim();
+    await axios.post('https://portfolio-backend-ryangormican.vercel.app/suggestions/add-suggestion', {
+      ...suggestion,
+      name: sanitizedName,
+      topic: sanitizedTopic,
+      suggestion: sanitizedSuggestion,
+    });
+    setSuggestion({
+      name: 'Anonymous',
+      topic: '',
+      suggestion: '',
+      date: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error('Error submitting suggestion:', error);
+  }
+};
+
 
     };
   return (
