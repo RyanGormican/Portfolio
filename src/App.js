@@ -115,7 +115,7 @@ const submitSuggestion = () => {
     }
   };
 
-    };
+   
   return (
     <div className="App" >
     <div className="title-container">
