@@ -83,7 +83,7 @@ switch(tag){
     }
     fetchSuggestions();
     }, []);
-    const submitSuggestion = async () => {
+ const submitSuggestion = async () => {
   try {
     if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
       return;
@@ -106,7 +106,6 @@ switch(tag){
   } catch (error) {
     console.error('Error submitting suggestion:', error);
   }
-};
 
 
 
