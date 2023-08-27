@@ -84,37 +84,36 @@ switch(tag){
     }
     fetchSuggestions();
     }, []);
-const submitSuggestion = async () => {
-  try {
-    if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
-      return;
-    }
-    const sanitizedName = suggestion.name.trim();
-    const sanitizedTopic = suggestion.topic.trim();
-    const sanitizedSuggestion = suggestion.suggestion.trim();
+const submitSuggestion = () => {
+    try {
+      if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
+        return;
+      }
     
-   
-    const newSuggestion = {
-      name: sanitizedName,
-      topic: sanitizedTopic,
-      suggestion: sanitizedSuggestion,
-      date: new Date().toISOString(),
-      status:'Incomplete'
-    };
+      const sanitizedName = suggestion.name.trim();
+      const sanitizedTopic = suggestion.topic.trim();
+      const sanitizedSuggestion = suggestion.suggestion.trim();
     
+      const newSuggestion = {
+        name: sanitizedName,
+        topic: sanitizedTopic,
+        suggestion: sanitizedSuggestion,
+        date: new Date().toISOString(),
+        status: 'Incomplete'
+      };
 
-    setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
+      setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
     
-    setSuggestion({
-      name: 'Anonymous',
-      topic: '',
-      suggestion: '',
-      date: new Date().toISOString(),
-    });
-  } catch (error) {
-    console.error('Error submitting suggestion:', error);
-  }
-};
+      setSuggestion({
+        name: 'Anonymous',
+        topic: '',
+        suggestion: '',
+        date: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error('Error submitting suggestion:', error);
+    }
+  };
 
     };
   return (
