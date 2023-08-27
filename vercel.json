@@ -12,10 +12,6 @@
       "dest": "backend/suggestions.js"
     },
     {
-      "src": "/api/.*",
-      "dest": "backend/index.js"
-    },
-    {
       "src": "/(.*)",
       "dest": "frontend/public/index.html"
     }
