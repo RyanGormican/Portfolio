@@ -1,6 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const suggestionsRoutes = require('./suggestions');
+
 
 const app = express();
 

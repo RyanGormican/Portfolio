@@ -118,6 +118,7 @@ switch(tag){
     <div className ="button-container">
     <div> 
     <Button  style={{ color: 'white' }} onClick={() => setView('projects')}> Projects  </Button>
+    <Button  style={{ color: 'white' }} onClick={() => setView('suggestions')}> Suggestions  </Button>
     </div>
     <div> 
   
