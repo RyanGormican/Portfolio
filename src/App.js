@@ -125,7 +125,6 @@ const submitSuggestion = () => {
    </div>
     <div className ="button-container">
     <div> 
-    <Button  style={{ color: 'white' }} onClick={() => setView('projects')}> Projects  </Button>
     </div>
     <div> 
   
