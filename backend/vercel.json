@@ -8,8 +8,12 @@
   ],
   "routes": [
     {
+      "src": "/suggestions/.*",
+      "dest": "/suggestions.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/index.js"
     }
   ]
 }
