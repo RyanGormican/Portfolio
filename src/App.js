@@ -127,6 +127,7 @@ const submitSuggestion = async () => {
     <div className ="button-container">
     <div> 
     <Button  style={{ color: 'white' }} onClick={() => setView('projects')}> Projects  </Button>
+    <Button  style={{ color: 'white' }} onClick={() => setView('suggestions')}> Projects  </Button>
     </div>
     <div> 
   
