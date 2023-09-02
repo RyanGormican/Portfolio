@@ -3,9 +3,7 @@
 .title {
   color: white;
   font-size: calc(10px + 2vmin);
-  font-family: Helvetica;
   font-style: italic;
-  text-decoration: underline;
   margin-bottom: 20px;
   width: 100vw;
   padding-left: 5vw;
@@ -32,7 +30,9 @@
 }
 
 
-
+*{
+	font-family: 'Jost', sans-serif;
+}
 /* Style for the button container */
 .button-container {
   position: fixed;
@@ -114,7 +114,6 @@ width: 100%;
   margin-top: 5px;
   font-size: 14px;
   color: white;
-  font-family: Helvetica;
   font-style: italic;
   text-decoration: underline;
   display: inline;
