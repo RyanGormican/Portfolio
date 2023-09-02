@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend",
     "\\frontend",
+    "\\public",
     "\\src"
   ],
-  "SelectedNode": "\\frontend\\public",
+  "SelectedNode": "\\backend\\db.js",
   "PreviewInSolutionExplorer": false
 }
