@@ -188,7 +188,7 @@ const submitSuggestion = () => {
       <Grid container spacing={0.75}>
         {otherProjects.map((project, index) => (
             <Grid item xs={4} key={index}>
-                 <Tooltip title={project.description}>
+                 <Tooltip title={project.description}style={{fontFamily:'Jost', }}>
                     <a href = {project.link}>
 			<img src = {project.name} width="100%">
                         </img>
