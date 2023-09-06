@@ -128,7 +128,7 @@ const submitSuggestion = () => {
     <Button style= {{color: 'white', fontFamily: 'Jost'}}  onClick={() => setView('projects')} variant = "text"> Projects </Button>
     </div>
     <div> 
-    <Button  style= {{color: 'white', fontFamily: 'Jost'}} onClick={() => setView('contact')}variant = "text"> Contact </Button>
+
     </div>
     <div className="links-container">
      <Container maxWidth="sm" >
