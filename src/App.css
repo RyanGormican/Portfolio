@@ -121,3 +121,16 @@ width: 100%;
 .text{
 	color: white;
 }
+h2{
+	text-align: center;
+	color: white;
+}
+.form-group{
+	text-align: center;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction:column;
+	gap:10px;
+}

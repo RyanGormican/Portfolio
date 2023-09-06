@@ -14,6 +14,7 @@ import Realdiscuss from './images/Realdiscuss.png'
 import Budgetbook from './images/Budgetbook.png'
 import CardCache from './images/CardCache.png'
 import GlobeGlance from './images/GlobeGlance.png'
+import Contact from './components/Contact';
 import { shuffle } from 'lodash';
 import React, { useState, useContext, useEffect } from 'react';
 import {Tag} from 'antd';
@@ -124,9 +125,10 @@ const submitSuggestion = () => {
    </div>
     <div className ="button-container">
     <div> 
+    <Button style= {{color: 'white', fontFamily: 'Jost'}}  onClick={() => setView('projects')} variant = "text"> Projects </Button>
     </div>
     <div> 
-  
+    <Button  style= {{color: 'white', fontFamily: 'Jost'}} onClick={() => setView('contact')}variant = "text"> Contact </Button>
     </div>
     <div className="links-container">
      <Container maxWidth="sm" >
@@ -140,20 +142,7 @@ const submitSuggestion = () => {
         </a>
     </div>
         </div>
-        <div className="row">
-    <div className="item">
-        <a href="mailto:ryan.gormican@gmail.com">
-            <Icon icon="mdi:email" color="#e8eaea" width="100%" height="100%"/>
-        </a>
-        <p className="other">ryan.gormican@gmail.com</p>
-    </div>
-         </div>
-        <div className="row">
-    <div className="item">
-        <Icon icon="ic:baseline-phone" color="#e8eaea" width="10%" height="10%" />
-        <p className="other">(306) 520-7738</p>
-    </div>
-        </div>
+        
       </Container>
     </div>
      </div>
@@ -236,6 +225,9 @@ const submitSuggestion = () => {
         </ul>
     </div>
     </div>
+ ) : null }
+ {view === 'contact' ? (
+ <Contact />
  ) : null }
         </div>
 
