@@ -58,7 +58,7 @@ export default function Suggestions() {
       name: sanitizedName,
       topic: sanitizedTopic,
       suggestion: sanitizedSuggestion,
-      date: serverTimestamp(),
+      date: server timestamp(),
       status,
     });
     setNewSuggestion('');
@@ -168,10 +168,11 @@ export default function Suggestions() {
           <TableBody>
             {sortedSuggestions.map((suggestion) => (
               <TableRow key={suggestion.id}
-              style={{
+               style={{
                   textDecoration:
-                    suggestion.status === 'Complete' ? 'underline' : 'none',
-                }}>
+                    suggestion.status === 'Complete' ? 'line-through' : 'none',
+                }}
+                >
                 <TableCell>{suggestion.name}</TableCell>
                 <TableCell>{suggestion.topic}</TableCell>
                 <TableCell>{suggestion.suggestion}</TableCell>
