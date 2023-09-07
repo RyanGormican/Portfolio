@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
-import {database} from '../firebaseConfig';
-
+import { collection, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
+import { database } from '../firebaseConfig';
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Paper,
+  Button,
+  TableSortLabel,
+} from '@mui/material';
 
 export default function Suggestions() {
   const [suggestions, setSuggestions] = useState([]);
@@ -10,6 +19,8 @@ export default function Suggestions() {
   const [name, setName] = useState('Anonymous');
   const [topic, setTopic] = useState('');
   const [status] = useState('Incomplete');
+  const [sortBy, setSortBy] = useState('date');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(database, 'suggestions'), (snapshot) => {
@@ -35,26 +46,42 @@ export default function Suggestions() {
   };
 
   const addSuggestion = async () => {
-    if (newSuggestion.trim() !== '') {
-      try {
-        await addDoc(collection(database, 'suggestions'), {
-          name,
-          topic,
-          suggestion: newSuggestion,
-          date: serverTimestamp(),
-          status,
-        });
-        setNewSuggestion('');
-        console.log('Suggestion added successfully');
-      } catch (error) {
-        console.error('Error adding suggestion: ', error);
-      }
-    }
+  if (name.trim() === '' || topic.trim() === '' || newSuggestion.trim() === '') {
+    return;
+  }
+  const sanitizedSuggestion = newSuggestion.trim();
+  const sanitizedName = name.trim();
+  const sanitizedTopic = topic.trim();
+
+  try {
+    await addDoc(collection(database, 'suggestions'), {
+      name: sanitizedName,
+      topic: sanitizedTopic,
+      suggestion: sanitizedSuggestion,
+      date: serverTimestamp(),
+      status,
+    });
+    setNewSuggestion('');
+  } catch (error) {
+  }
+};
+
+  const handleSort = (property) => {
+    const isAsc = sortBy === property && sortOrder === 'asc';
+    setSortBy(property);
+    setSortOrder(isAsc ? 'desc' : 'asc');
   };
 
+ const sortedSuggestions = [...suggestions].sort((a, b) => {
+  const aValue = a[sortBy];
+  const bValue = b[sortBy];
+  return sortOrder === 'asc' ? aValue > bValue ? 1 : -1 : bValue > aValue ? 1 : -1;
+});
+
+
   return (
-    <div className = "suggestions">
-      <h2>Suggestions Box</h2>
+    <div className="suggestions">
+      <h2>Want to give feedback? Leave me a suggestion!</h2>
       <div>
         <label>Name: </label>
         <input
@@ -83,18 +110,77 @@ export default function Suggestions() {
           placeholder="Enter your suggestion"
         />
       </div>
-      <button onClick={addSuggestion}>Submit</button>
-      <ul>
-        {suggestions.map((suggestion) => (
-          <li key={suggestion.id}>
-            <strong>Name:</strong> {suggestion.name},{' '}
-            <strong>Topic:</strong> {suggestion.topic},{' '}
-            <strong>Suggestion:</strong> {suggestion.suggestion},{' '}
-           <strong>Date:</strong> {suggestion.date ? suggestion.date.toDate().toLocaleString() : 'N/A'},{' '}
-            <strong>Status:</strong> {suggestion.status}
-          </li>
-        ))}
-      </ul>
+      <Button variant="contained" color="primary" onClick={addSuggestion}>
+        Submit
+      </Button>
+      <TableContainer component={Paper}>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <TableSortLabel
+                  active={sortBy === 'name'}
+                  direction={sortBy === 'name' ? sortOrder : 'asc'}
+                  onClick={() => handleSort('name')}
+                >
+                  Name
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sortBy === 'topic'}
+                  direction={sortBy === 'topic' ? sortOrder : 'asc'}
+                  onClick={() => handleSort('topic')}
+                >
+                  Topic
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sortBy === 'suggestion'}
+                  direction={sortBy === 'suggestion' ? sortOrder : 'asc'}
+                  onClick={() => handleSort('suggestion')}
+                >
+                  Suggestion
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sortBy === 'date'}
+                  direction={sortBy === 'date' ? sortOrder : 'asc'}
+                  onClick={() => handleSort('date')}
+                >
+                  Date of Submission
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>
+                <TableSortLabel
+                  active={sortBy === 'status'}
+                  direction={sortBy === 'status' ? sortOrder : 'asc'}
+                  onClick={() => handleSort('status')}
+                >
+              Status
+                 </TableSortLabel>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedSuggestions.map((suggestion) => (
+              <TableRow key={suggestion.id}>
+                <TableCell>{suggestion.name}</TableCell>
+                <TableCell>{suggestion.topic}</TableCell>
+                <TableCell>{suggestion.suggestion}</TableCell>
+                <TableCell>
+                  {suggestion.date
+                    ? suggestion.date.toDate().toLocaleString()
+                    : 'N/A'}
+                </TableCell>
+                <TableCell>{suggestion.status}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }
