@@ -168,7 +168,10 @@ export default function Suggestions() {
           <TableBody>
             {sortedSuggestions.map((suggestion) => (
               <TableRow key={suggestion.id}
-              className={suggestion.status === 'complete' ? 'complete-row' : ''}>
+              style={{
+                  textDecoration:
+                    suggestion.status === 'Complete' ? 'underline' : 'none',
+                }}>
                 <TableCell>{suggestion.name}</TableCell>
                 <TableCell>{suggestion.topic}</TableCell>
                 <TableCell>{suggestion.suggestion}</TableCell>
