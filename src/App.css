@@ -10,6 +10,9 @@
   position: fixed;
   z-index: 1;
 }
+.complete-row {
+  text-decoration: underline;
+}
 
 .title-container {
   position: fixed;
