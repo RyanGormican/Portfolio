@@ -168,7 +168,7 @@ export default function Suggestions() {
           <TableBody>
             {sortedSuggestions.map((suggestion) => (
               <TableRow key={suggestion.id}
-              className={suggestion.status === 'Complete' ? 'complete-row' : ''}>
+              className={suggestion.status === 'complete' ? 'complete-row' : ''}>
                 <TableCell>{suggestion.name}</TableCell>
                 <TableCell>{suggestion.topic}</TableCell>
                 <TableCell>{suggestion.suggestion}</TableCell>
