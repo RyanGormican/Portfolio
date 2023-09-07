@@ -78,7 +78,14 @@
   border-style: solid;
   border-color: white;
 }
-
+.suggestions{
+	text-align: center;
+	justify-content: center;
+	flex-direction:column;
+	
+	font-family: 'Jost', sans-serif;
+	color: white;
+}
 .links-container {
 position: absolute;
 bottom:5vh;

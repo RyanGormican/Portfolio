@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
+import {database} from '../firebaseConfig';
 
-const app = initializeApp(process.env);
-const db = getFirestore(app);
 
 export default function Suggestions() {
   const [suggestions, setSuggestions] = useState([]);
@@ -13,7 +12,7 @@ export default function Suggestions() {
   const [status] = useState('Incomplete');
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, 'suggestions'), (snapshot) => {
+    const unsubscribe = onSnapshot(collection(database, 'suggestions'), (snapshot) => {
       const suggestionList = [];
       snapshot.forEach((doc) => {
         suggestionList.push({ id: doc.id, ...doc.data() });
@@ -38,7 +37,7 @@ export default function Suggestions() {
   const addSuggestion = async () => {
     if (newSuggestion.trim() !== '') {
       try {
-        await addDoc(collection(db, 'suggestions'), {
+        await addDoc(collection(database, 'suggestions'), {
           name,
           topic,
           suggestion: newSuggestion,
@@ -54,7 +53,7 @@ export default function Suggestions() {
   };
 
   return (
-    <div>
+    <div className = "suggestions">
       <h2>Suggestions Box</h2>
       <div>
         <label>Name: </label>
@@ -91,7 +90,7 @@ export default function Suggestions() {
             <strong>Name:</strong> {suggestion.name},{' '}
             <strong>Topic:</strong> {suggestion.topic},{' '}
             <strong>Suggestion:</strong> {suggestion.suggestion},{' '}
-            <strong>Date:</strong> {suggestion.date.toDate().toLocaleString()},{' '}
+           <strong>Date:</strong> {suggestion.date ? suggestion.date.toDate().toLocaleString() : 'N/A'},{' '}
             <strong>Status:</strong> {suggestion.status}
           </li>
         ))}
