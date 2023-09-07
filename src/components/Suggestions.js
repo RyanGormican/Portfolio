@@ -98,6 +98,7 @@ export default function Suggestions() {
           name="topic"
           value={topic}
           onChange={handleInputChange}
+          placeholder="Enter your topic"
         />
       </div>
       <div>
