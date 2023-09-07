@@ -10,9 +10,10 @@ import CardCache from '../images/CardCache.png'
 import GlobeGlance from '../images/GlobeGlance.png'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
+import {analytics} from '../firebaseConfig.js';
+import {logEvent} from "firebase/analytics";
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { analytics } from '../firebaseConfig';
 import { shuffle } from 'lodash';
 export default function Projects () {
 const getColor = (tag)=>{
@@ -38,32 +39,49 @@ switch(tag){
 
 };
     const projects = [
-	{name: GlobeGlance, description: "GlobeGlance is a front-end web app for obtaining locational data such as weather. Users are able to input the search of a location in the world and be given a range of formulated data about that place done using multiple API calls.", link: "https://globeglance.vercel.app/",tags:["CSS", "HTML", "JavaScript",  "React.js", "Web Development"]},    
-	{name: CardCache, description: "CardCache is a full-stack web application based on file management. It offers users the ability to store and organize an array of files within their associated accounts, similar to the functionalities provided by Google Drive. The card refers to folder capabilities, allowing users to structure and manage their files efficiently.", link: "https://cardcache.vercel.app/", tags:["CSS", "Databases", "Full-Stack Development", "Google Firebase", "HTML", "JavaScript",  "React.js", "Web Development"]},
-	{name: Budgetbook, description: "BudgetBook is a react app designed for managing expenses. Users are able to manage a list of costs by way of add and delete buttons. They can also modify the budget for the expense list to keep track of how much budget is remaining in relation to how much the total expenses in the expenses list total up to. As well, one can add tags to their costs in order to figure out their total along with what percentage of their budget is associated with a specific category.", link: "https://budget-book.vercel.app"},
-        {name: Realdiscuss, description: "RealDiscuss is a full-stack web application developed using the Next.js framework for the React library. RealDiscuss is a message board app allowing the users after verifying user authentication to manage posts. Users can manage their own posts from the Google Firebase database by either creating a new one or deleting and editing the ones they already have available to them. Users can also manage posts by clicking on a specific post on the index page and on the comments section allowing the user to add comments to specific users' posts.", link: "https://realdiscuss.vercel.app/"},
-        {name: Quotedfor, description: "QuotedFor is a web app made using the React library. The web app provides for the user to view a thought-provoking quote on load and through the push of a button. The application for retrieving the quotes for the web app was fetched using API calls.", link: "https://quotedfor.vercel.app/"},
-        {name: Moviesight, description: "MovieSight is a front-end web app created with the Vue framework. The application allows the user to view details on the latest popular movies. With the integration of API calls, the user gets displayed on the home page a featured movie along with a list of movies and their descriptions. Users can then click on either the view more for the featured movie or just on the movie itself for the list of movies and get taken to a vision page in order to gain more details about the movie such as its runtime and the country of origin for the film.", link: "https://moviesight.vercel.app/"},
-        {name: Listlast, description: "ListLast is a to-do list app allowing the user to add, update, and remove tasks from a list. The Bootstrap framework, and React states are utilized in order for users to be able to manage those actions through the buttons on the interface.", link: "https://listlast.vercel.app/"},
-        {name: Denoted, description: "DeNoted is a notes app developed using React and an assortment of web technologies. Users are able to manage the notes on the page by adding and deleting the notes they want to change. Management of notes also allows the user to change the design of a note by modifying the background color.", link: "https://denoted.vercel.app/"},
-        {name: Compscidle, description: "CompScidle is a clone of the popular New York Times game Wordle using the React library. The user has 6 attempts to guess a 5 letter word using the keyboard onscreen or by typing on the keyboard. Words are pulled from a .txt file all centered around program and computer science-related topics.", link: "https://compscidle.vercel.app/"},
+	{name: GlobeGlance, title:"GlobeGlance" , description: "GlobeGlance is a front-end web app for obtaining locational data such as weather. Users are able to input the search of a location in the world and be given a range of formulated data about that place done using multiple API calls.", link: "https://globeglance.vercel.app/",tags:["CSS", "HTML", "JavaScript",  "React.js", "Web Development"]},    
+	{name: CardCache,title:"CardCache" , description: "CardCache is a full-stack web application based on file management. It offers users the ability to store and organize an array of files within their associated accounts, similar to the functionalities provided by Google Drive. The card refers to folder capabilities, allowing users to structure and manage their files efficiently.", link: "https://cardcache.vercel.app/", tags:["CSS", "Databases", "Full-Stack Development", "Google Firebase", "HTML", "JavaScript",  "React.js", "Web Development"]},
+	{name: Budgetbook,title:"BudgetBook" , description: "BudgetBook is a react app designed for managing expenses. Users are able to manage a list of costs by way of add and delete buttons. They can also modify the budget for the expense list to keep track of how much budget is remaining in relation to how much the total expenses in the expenses list total up to. As well, one can add tags to their costs in order to figure out their total along with what percentage of their budget is associated with a specific category.", link: "https://budget-book.vercel.app"},
+        {name: Realdiscuss,title:"RealDiscuss" , description: "RealDiscuss is a full-stack web application developed using the Next.js framework for the React library. RealDiscuss is a message board app allowing the users after verifying user authentication to manage posts. Users can manage their own posts from the Google Firebase database by either creating a new one or deleting and editing the ones they already have available to them. Users can also manage posts by clicking on a specific post on the index page and on the comments section allowing the user to add comments to specific users' posts.", link: "https://realdiscuss.vercel.app/"},
+        {name: Quotedfor,title:"QuotedFor" , description: "QuotedFor is a web app made using the React library. The web app provides for the user to view a thought-provoking quote on load and through the push of a button. The application for retrieving the quotes for the web app was fetched using API calls.", link: "https://quotedfor.vercel.app/"},
+        {name: Moviesight,title:"MovieSight" , description: "MovieSight is a front-end web app created with the Vue framework. The application allows the user to view details on the latest popular movies. With the integration of API calls, the user gets displayed on the home page a featured movie along with a list of movies and their descriptions. Users can then click on either the view more for the featured movie or just on the movie itself for the list of movies and get taken to a vision page in order to gain more details about the movie such as its runtime and the country of origin for the film.", link: "https://moviesight.vercel.app/"},
+        {name: Listlast,title:"ListLast" , description: "ListLast is a to-do list app allowing the user to add, update, and remove tasks from a list. The Bootstrap framework, and React states are utilized in order for users to be able to manage those actions through the buttons on the interface.", link: "https://listlast.vercel.app/"},
+        {name: Denoted,title:"Denoted" , description: "DeNoted is a notes app developed using React and an assortment of web technologies. Users are able to manage the notes on the page by adding and deleting the notes they want to change. Management of notes also allows the user to change the design of a note by modifying the background color.", link: "https://denoted.vercel.app/"},
+        {name: Compscidle,title:"Compscidle" , description: "CompScidle is a clone of the popular New York Times game Wordle using the React library. The user has 6 attempts to guess a 5 letter word using the keyboard onscreen or by typing on the keyboard. Words are pulled from a .txt file all centered around program and computer science-related topics.", link: "https://compscidle.vercel.app/"},
     ];
     const featuredProjectLink = "https://cardcache.vercel.app/"
     const shuffledProjects = shuffle(projects);
+
     const featuredProject = shuffledProjects.find(project => project.link === featuredProjectLink);
     const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
     const trackLinkClick = (linkName) => {
-  analytics.logEvent('project-click', {
-    name: linkName,
-  });
+  try {
+    logEvent(analytics, 'project-click', {
+      name: linkName,
+    });
+  } catch (error) {
+    console.error('Error logging event:', error);
+  }
 };
 return (
  <div>
 	      {featuredProject && (
             <Grid container spacing={0.75}>
               <Grid item xs={8}>
-                <a href={featuredProject.link} onClick={() => trackLinkClick(featuredProject.name)}>
-                  <img src={featuredProject.name} width="100%" alt={featuredProject.name} />
+                <a href={featuredProject.link} onClick={(e) => {
+    if (e.button === 0 || e.button === 1) {
+      trackLinkClick(featuredProject.title);
+    }
+  }}
+  onMouseDown={(e) => {
+    if (e.button === 1) {
+      trackLinkClick(featuredProject.title);
+    }
+  }}
+                
+                
+                >
+                  <img src={featuredProject.name} width="100%" alt={featuredProject.title} />
                 </a>
               </Grid>
               <Grid item xs={4}>
@@ -83,7 +101,19 @@ return (
         {otherProjects.map((project, index) => (
             <Grid item xs={4} key={index}>
                  <Tooltip title={project.description}style={{fontFamily:'Jost', }}>
-                    <a href = {project.link} onClick={() => trackLinkClick(project.name)}>
+                    <a href = {project.link} 
+                    onClick={(e) => {
+    if (e.button === 0 || e.button === 1) {
+
+      trackLinkClick(project.name);
+    }
+  }}
+  onMouseDown={(e) => {
+    if (e.button === 1) {
+      trackLinkClick(project.name);
+    }
+  }}
+>
 			<img src = {project.name} width="100%">
                         </img>
                     </a>
