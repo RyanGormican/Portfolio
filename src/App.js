@@ -19,7 +19,7 @@ import { shuffle } from 'lodash';
 import React, { useState, useContext, useEffect } from 'react';
 import {Tag} from 'antd';
 import axios from 'axios';
-import suggestionsData from './suggestions.json';
+import suggestions from './components/Suggestions';
 function App() {
 const getColor = (tag)=>{
 switch(tag){
@@ -60,61 +60,6 @@ switch(tag){
     const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
 
     const [view, setView] = useState('projects');
-    const [suggestion, setSuggestion] = useState({
-    name : 'Anonymous',
-    topic: '',
-    suggestion: '',
-    date: new Date().toISOString(),
-    });
- const [suggestions, setSuggestions] = useState(suggestionsData);
-    const handleSuggestionChange = (field, value)=>{
-        setSuggestion(prevSuggestion => ({
-        ...prevSuggestion,
-        [field]:value,
-        }));
-    };
-    useEffect(() => {
-    async function fetchSuggestions() {
-        try {
-            const response = await axios.get('/app/suggestions/get-suggestions');
-            setSuggestions(response.data);
-        } catch (error) {
-            console.error('Error fetching suggestiongs:', error);
-        }
-    }
-    fetchSuggestions();
-    }, []);
-const submitSuggestion = () => {
-    try {
-      if (!suggestion.topic || !suggestion.suggestion || !suggestion.name) {
-        return;
-      }
-    
-      const sanitizedName = suggestion.name.trim();
-      const sanitizedTopic = suggestion.topic.trim();
-      const sanitizedSuggestion = suggestion.suggestion.trim();
-    
-      const newSuggestion = {
-        name: sanitizedName,
-        topic: sanitizedTopic,
-        suggestion: sanitizedSuggestion,
-        date: new Date().toISOString(),
-        status: 'Incomplete'
-      };
-
-      setSuggestions(prevSuggestions => [...prevSuggestions, newSuggestion]);
-    
-      setSuggestion({
-        name: 'Anonymous',
-        topic: '',
-        suggestion: '',
-        date: new Date().toISOString(),
-      });
-    } catch (error) {
-      console.error('Error submitting suggestion:', error);
-    }
-  };
-
    
   return (
     <div className="App" >
@@ -189,42 +134,7 @@ const submitSuggestion = () => {
 	     </div>
     ) : null }
  {view === 'suggestions' ? (
-
- <div className="centered">
-    <Typography variant="h2" style={{color: 'white'}}>
-    Want to give me some feedback? Leave a suggestion!
-    </Typography>
-    <div className="suggestion-form">
-        <div className="suggestion-input">
-            <label className="text" htmlFor="Name"> Name: </label>
-            <input type="text" id="name" value={suggestion.name} onChange={e => handleSuggestionChange('name',e.target.value)}/>
-        </div>
-        <div className="suggestion-input">
-            <label className="text" htmlFor="Topic"> Topic: </label>
-            <input type="text" id="topic" value={suggestion.topic} onChange={e => handleSuggestionChange('topic',e.target.value)}/>
-        </div>
-        <div className="suggestion-input">
-            <label className="text"htmlFor="Suggestion"> Suggestion: </label>
-            <input type="text" id="suggestion" value={suggestion.suggestion} onChange={e => handleSuggestionChange('suggestion',e.target.value)}/>
-        </div>
-    <Button style={{ color: 'white' }} onClick={submitSuggestion}> Submit </Button>
-    </div>
-    <div className="suggestions-list">
-        <Typography variant="h2" style={{color: 'white'}}>
-            Suggestions:
-        </Typography>
-        <ul>
-        {suggestions && Array.isArray(suggestions) && suggestions.map((suggestion,index) =>(
-            <li key={index}>
-            <p> Name: {suggestion.name} </p>
-            <p> Topic: {suggestion.topic} </p>
-            <p> Suggestion: {suggestion.suggestion} </p>
-            <p>Date: {new Date(suggestion.date).toLocaleString()}</p>
-            </li>
-        ))}
-        </ul>
-    </div>
-    </div>
+ <Suggestion />
  ) : null }
  {view === 'contact' ? (
  <Contact />
