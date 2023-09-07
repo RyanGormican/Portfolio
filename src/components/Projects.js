@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Compscidle from '../images/Compscidle.png'
 import Denoted from '../images/Denoted.png'
 import Listlast from '../images/Listlast.png'
@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import { analytics } from '../firebaseConfig';
 import { shuffle } from 'lodash';
 export default function Projects () {
 const getColor = (tag)=>{
@@ -51,13 +52,17 @@ switch(tag){
     const shuffledProjects = shuffle(projects);
     const featuredProject = shuffledProjects.find(project => project.link === featuredProjectLink);
     const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
-
+    const trackLinkClick = (linkName) => {
+  analytics.logEvent('link_click', {
+    link_name: linkName,
+  });
+};
 return (
  <div>
 	      {featuredProject && (
             <Grid container spacing={0.75}>
               <Grid item xs={8}>
-                <a href={featuredProject.link}>
+                <a href={featuredProject.link} onClick={() => trackLinkClick(featuredProject.name)}>
                   <img src={featuredProject.name} width="100%" alt={featuredProject.name} />
                 </a>
               </Grid>
@@ -78,7 +83,7 @@ return (
         {otherProjects.map((project, index) => (
             <Grid item xs={4} key={index}>
                  <Tooltip title={project.description}style={{fontFamily:'Jost', }}>
-                    <a href = {project.link}>
+                    <a href = {project.link} onClick={() => trackLinkClick(project.name)}>
 			<img src = {project.name} width="100%">
                         </img>
                     </a>

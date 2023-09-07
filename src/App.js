@@ -1,14 +1,9 @@
 import './App.css';
-
 import Container from '@mui/material/Container';
-
 import Button from '@mui/material/Button';
 import { Icon } from '@iconify/react';
 import Contact from './components/Contact';
-
-import React, { useState, useContext, useEffect } from 'react';
-
-import axios from 'axios';
+import React, { useState} from 'react';
 import Suggestions from './components/Suggestions';
 import Projects from './components/Projects';
 function App() {
