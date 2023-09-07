@@ -55,13 +55,10 @@ switch(tag){
     const featuredProject = shuffledProjects.find(project => project.link === featuredProjectLink);
     const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
     const trackLinkClick = (linkName) => {
-  try {
     logEvent(analytics, 'project-click', {
       name: linkName,
     });
-  } catch (error) {
-    console.error('Error logging event:', error);
-  }
+  
 };
 return (
  <div>
@@ -104,13 +101,12 @@ return (
                     <a href = {project.link} 
                     onClick={(e) => {
     if (e.button === 0 || e.button === 1) {
-
-      trackLinkClick(project.name);
+      trackLinkClick(project.title);
     }
   }}
   onMouseDown={(e) => {
     if (e.button === 1) {
-      trackLinkClick(project.name);
+      trackLinkClick(project.title);
     }
   }}
 >
