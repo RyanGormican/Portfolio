@@ -53,8 +53,8 @@ switch(tag){
     const featuredProject = shuffledProjects.find(project => project.link === featuredProjectLink);
     const otherProjects = shuffledProjects.filter(project => project.link !== featuredProjectLink);
     const trackLinkClick = (linkName) => {
-  analytics.logEvent('link_click', {
-    link_name: linkName,
+  analytics.logEvent('project-click', {
+    name: linkName,
   });
 };
 return (
