@@ -1,16 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import { database } from '../firebaseConfig';
-import { getFirestore, collection, addDoc, onSnapshot } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 
-export default function Suggestions () {
- const [suggestions, setSuggestions] = useState([]);
+const app = initializeApp(process.env);
+const db = getFirestore(app);
+
+export default function Suggestions() {
+  const [suggestions, setSuggestions] = useState([]);
   const [newSuggestion, setNewSuggestion] = useState('');
+  const [name, setName] = useState('Anonymous');
+  const [topic, setTopic] = useState('');
+  const [status] = useState('Incomplete');
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(database, 'suggestions'), (snapshot) => {
+    const unsubscribe = onSnapshot(collection(db, 'suggestions'), (snapshot) => {
       const suggestionList = [];
       snapshot.forEach((doc) => {
-        suggestionList.push({ id: doc.id, text: doc.data().text });
+        suggestionList.push({ id: doc.id, ...doc.data() });
       });
       setSuggestions(suggestionList);
     });
@@ -19,38 +25,77 @@ export default function Suggestions () {
   }, []);
 
   const handleInputChange = (e) => {
-    setNewSuggestion(e.target.value);
+    const { name, value } = e.target;
+    if (name === 'newSuggestion') {
+      setNewSuggestion(value);
+    } else if (name === 'name') {
+      setName(value);
+    } else if (name === 'topic') {
+      setTopic(value);
+    }
   };
 
   const addSuggestion = async () => {
     if (newSuggestion.trim() !== '') {
       try {
-        const docRef = await addDoc(collection(database, 'suggestions'), {
-          text: newSuggestion,
+        await addDoc(collection(db, 'suggestions'), {
+          name,
+          topic,
+          suggestion: newSuggestion,
+          date: serverTimestamp(),
+          status,
         });
         setNewSuggestion('');
-        console.log('Suggestion added with ID: ', docRef.id);
+        console.log('Suggestion added successfully');
       } catch (error) {
         console.error('Error adding suggestion: ', error);
       }
     }
   };
 
-return (
-<div>
+  return (
+    <div>
       <h2>Suggestions Box</h2>
+      <div>
+        <label>Name: </label>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Topic: </label>
+        <input
+          type="text"
+          name="topic"
+          value={topic}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label>Suggestion: </label>
+        <input
+          type="text"
+          name="newSuggestion"
+          value={newSuggestion}
+          onChange={handleInputChange}
+          placeholder="Enter your suggestion"
+        />
+      </div>
+      <button onClick={addSuggestion}>Submit</button>
       <ul>
         {suggestions.map((suggestion) => (
-          <li key={suggestion.id}>{suggestion.text}</li>
+          <li key={suggestion.id}>
+            <strong>Name:</strong> {suggestion.name},{' '}
+            <strong>Topic:</strong> {suggestion.topic},{' '}
+            <strong>Suggestion:</strong> {suggestion.suggestion},{' '}
+            <strong>Date:</strong> {suggestion.date.toDate().toLocaleString()},{' '}
+            <strong>Status:</strong> {suggestion.status}
+          </li>
         ))}
       </ul>
-      <input
-        type="text"
-        placeholder="Enter your suggestion"
-        value={newSuggestion}
-        onChange={handleInputChange}
-      />
-      <button onClick={addSuggestion}>Submit</button>
     </div>
-);
+  );
 }
