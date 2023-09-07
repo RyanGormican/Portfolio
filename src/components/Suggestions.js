@@ -170,7 +170,7 @@ export default function Suggestions() {
               <TableRow key={suggestion.id}
               style={{
                   textDecoration:
-                    suggestion.status === 'Complete' ? 'underline' : 'none',
+                    suggestion.status === 'Complete' ? 'line-through' : 'none',
                 }}>
                 <TableCell>{suggestion.name}</TableCell>
                 <TableCell>{suggestion.topic}</TableCell>
