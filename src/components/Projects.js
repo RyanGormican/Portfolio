@@ -58,7 +58,7 @@ switch(tag){
     logEvent(analytics, 'project-click', {
       name: linkName,
     });
-  
+   logEvent(analytics, linkName);
 };
 return (
  <div>
