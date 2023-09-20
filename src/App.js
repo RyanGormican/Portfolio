@@ -23,7 +23,7 @@ function App() {
     <Button style= {{color: 'white', fontFamily: 'Jost',textAlign: 'center'}}  onClick={() => setView('projects')} variant = "text"> Projects </Button>
     </div>
     <div> 
-         <Button style= {{color: 'white', fontFamily: 'Jost',textAlign: 'center'}}  onClick={() => setView('suggestions')} variant = "text"> Suggestions </Button>
+
     </div>
     <div className="links-container">
      <Container maxWidth="sm" >
