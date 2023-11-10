@@ -8,7 +8,7 @@ import Realdiscuss from '../images/Realdiscuss.png'
 import Budgetbook from '../images/Budgetbook.png'
 import CardCache from '../images/CardCache.png'
 import GlobeGlance from '../images/GlobeGlance.png'
-import CalculateExpress from '../images/CalculateExpress.PNG'
+import CalculateExpress from '../images/CalculateExpress.png'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import {analytics} from '../firebaseConfig.js';
