@@ -8,6 +8,7 @@ import Realdiscuss from '../images/Realdiscuss.png'
 import Budgetbook from '../images/Budgetbook.png'
 import CardCache from '../images/CardCache.png'
 import GlobeGlance from '../images/GlobeGlance.png'
+import CalculateExpress from '../images/CalculateExpress.PNG'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import {analytics} from '../firebaseConfig.js';
@@ -39,6 +40,7 @@ switch(tag){
 
 };
     const projects = [
+	{name: CalculateExpress,title:"CalculateExpress" , description: "CalculateExpress is a front-end Angular app dealing with calculations. Users use the on-screen buttons to apply operations to an input of numbers.", link: "https://calculateexpress.vercel.app/"},
 	{name: GlobeGlance, title:"GlobeGlance" , description: "GlobeGlance is a front-end web app for obtaining locational data such as weather. Users are able to input the search of a location in the world and be given a range of formulated data about that place done using multiple API calls.", link: "https://globeglance.vercel.app/",tags:["CSS", "HTML", "JavaScript",  "React.js", "Web Development"]},    
 	{name: CardCache,title:"CardCache" , description: "CardCache is a full-stack web application based on file management. It offers users the ability to store and organize an array of files within their associated accounts, similar to the functionalities provided by Google Drive. The card refers to folder capabilities, allowing users to structure and manage their files efficiently.", link: "https://cardcache.vercel.app/", tags:["CSS", "Databases", "Full-Stack Development", "Google Firebase", "HTML", "JavaScript",  "React.js", "Web Development"]},
 	{name: Budgetbook,title:"BudgetBook" , description: "BudgetBook is a react app designed for managing expenses. Users are able to manage a list of costs by way of add and delete buttons. They can also modify the budget for the expense list to keep track of how much budget is remaining in relation to how much the total expenses in the expenses list total up to. As well, one can add tags to their costs in order to figure out their total along with what percentage of their budget is associated with a specific category.", link: "https://budget-book.vercel.app"},
