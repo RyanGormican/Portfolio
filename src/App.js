@@ -8,7 +8,6 @@ import Suggestions from './components/Suggestions';
 import Projects from './components/Projects';
 function App() {
  const [view, setView] = useState('projects');
-   
   return (
     <div className="App" >
     <div className="title-container">
