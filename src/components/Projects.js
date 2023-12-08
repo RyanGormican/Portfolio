@@ -11,6 +11,7 @@ import GlobeGlance from '../images/GlobeGlance.png'
 import CalculateExpress from '../images/CalculateExpress.png'
 import TriviaTempo from '../images/TriviaTempo.png'
 import PaintersParadise from '../images/PaintersParadise.png'
+import SimplyCharts from '../images/SimplyCharts.png'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import {analytics} from '../firebaseConfig.js';
@@ -42,6 +43,7 @@ switch(tag){
 
 };
     const projects = [
+	{name: SimplyCharts, title:"SimplyCharts" , description: "SimplyCharts is a lightweight React.js web application designed for generating charts. Users can use the onscreen controls to customize their charts. After pressing the button, the chart image gets generated using the QuickChart API.", link: "https://simplycharts.vercel.app/"},
 	{name: PaintersParadise, title:"PaintersParadise" , description: "PaintersParadise is a drawing app constructed using Vue.js. Users are able to construct their masterpiece on the canvas using the given design tools.", link: "https://paintersparadise.vercel.app/"},
         {name: TriviaTempo, title:"TriviaTempo" , description: "TriviaTempo is a fast-paced web-based trivia game built with React.js. Using The Trivia API, users are given a rapid fire of trivia questions from a variety of categories with 15 seconds to answer each one.", link: "https://triviatempo.vercel.app/"},
 	{name: CalculateExpress,title:"CalculateExpress" , description: "CalculateExpress is a front-end Angular app dealing with calculations. Users use the on-screen buttons to apply operations to an input of numbers.", link: "https://calculateexpress.vercel.app/"},
