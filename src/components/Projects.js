@@ -13,6 +13,7 @@ import TriviaTempo from '../images/TriviaTempo.png'
 import PaintersParadise from '../images/PaintersParadise.png'
 import SimplyCharts from '../images/SimplyCharts.png'
 import WordWonder from '../images/WordWonder.png'
+import Pokendex from '../images/Pokendex.png'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import {analytics} from '../firebaseConfig.js';
