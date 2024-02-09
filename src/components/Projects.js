@@ -14,6 +14,7 @@ import PaintersParadise from '../images/PaintersParadise.png'
 import SimplyCharts from '../images/SimplyCharts.png'
 import WordWonder from '../images/WordWonder.png'
 import Pokendex from '../images/Pokendex.png'
+import KanbanKeeper from '../images/KanbanKeeper.png'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import {analytics} from '../firebaseConfig.js';
@@ -45,7 +46,8 @@ switch(tag){
 
 };
     const projects = [
-	{name: Pokendex, title:"Pokendex" , description: "Pokendex is a Ruby on Rails app acting as a web-based Pokedex. Users can view and examine information regarding the 1025 Pokemon that exist within the series.", link: "https://pokendex.up.railway.app/"},
+	{name: KanbanKeeper, title:"KanbanKeeper" , description: "KanbanKeeper is a Vue.js web application. Users are able to keep track and manage their Kanban board by controlling the various properties pertaining to it's cards and lists.", link: "https://kanbankeeper.vercel.app/"},
+	{name: Pokendex, title:"Pokendex" , description: "(HOSTING CURRENTLY UNAVAILABLE) Pokendex is a Ruby on Rails app acting as a web-based Pokedex. Users can view and examine information regarding the 1025 Pokemon that exist within the series.", link: "https://github.com/RyanGormican/Pokendex"},
 	{name: WordWonder, title:"WordWonder" , description: "WordWonder is a front-end word-processing app done with React.js. Users can use their textual input along with the given set of tools to produce a document for them to use.", link: "https://wordwonder.vercel.app/"},
 	{name: SimplyCharts, title:"SimplyCharts" , description: "SimplyCharts is a lightweight React.js web application designed for generating charts. Users can use the onscreen controls to customize their charts. After pressing the button, the chart image gets generated using the QuickChart API.", link: "https://simplycharts.vercel.app/"},
 	{name: PaintersParadise, title:"PaintersParadise" , description: "PaintersParadise is a drawing app constructed using Vue.js. Users are able to construct their masterpiece on the canvas using the given design tools.", link: "https://paintersparadise.vercel.app/"},
