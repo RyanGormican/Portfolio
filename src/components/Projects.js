@@ -47,7 +47,7 @@ switch(tag){
 
 };
     const projects = [
-	{name: IdleCubicle, title:"IdleCubicle" , description: "IdleCubicle is a react.js idle game. Users manage a multitude of resources while completing objectives and milestones along the way.", link: "https://idlecubicle.vercel.app/"},
+	{name: IdleCubicle, title:"IdleCubicle" , description: "IdleCubicle is a React.js idle game. Users manage a multitude of resources while completing objectives and milestones along the way.", link: "https://idlecubicle.vercel.app/"},
 	{name: KanbanKeeper, title:"KanbanKeeper" , description: "KanbanKeeper is a Vue.js web application. Users are able to keep track and manage their Kanban board by controlling the various properties pertaining to its cards and lists.", link: "https://kanbankeeper.vercel.app/"},
 	{name: Pokendex, title:"Pokendex" , description: "(HOSTING CURRENTLY UNAVAILABLE) Pokendex is a Ruby on Rails app acting as a web-based Pokedex. Users can view and examine information regarding the 1025 Pokemon that exist within the series.", link: "https://github.com/RyanGormican/Pokendex"},
 	{name: WordWonder, title:"WordWonder" , description: "WordWonder is a front-end word-processing app done with React.js. Users can use their textual input along with the given set of tools to produce a document for them to use.", link: "https://wordwonder.vercel.app/"},
