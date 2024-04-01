@@ -16,6 +16,7 @@ import WordWonder from '../images/WordWonder.png'
 import Pokendex from '../images/Pokendex.png'
 import KanbanKeeper from '../images/KanbanKeeper.png'
 import IdleCubicle from '../images/IdleCubicle.png'
+import Searchimization from '../images/Searchimization.png'
 import Grid from '@mui/material/Grid';
 import {Tag} from 'antd';
 import {analytics} from '../firebaseConfig.js';
@@ -47,6 +48,7 @@ switch(tag){
 
 };
     const projects = [
+	{name: Searchimization, title:"Searchimization" , description: "Searchimization is a Next.js web application. Inspired by the NYT game of 'Strands', users can create their word search puzzles and share them for people to play.", link: "https://searchimization.vercel.app/"},
 	{name: IdleCubicle, title:"IdleCubicle" , description: "IdleCubicle is a React.js idle game. Users manage a multitude of resources while completing objectives and milestones along the way.", link: "https://idlecubicle.vercel.app/"},
 	{name: KanbanKeeper, title:"KanbanKeeper" , description: "KanbanKeeper is a Vue.js web application. Users are able to keep track and manage their Kanban board by controlling the various properties pertaining to its cards and lists.", link: "https://kanbankeeper.vercel.app/"},
 	{name: Pokendex, title:"Pokendex" , description: "(HOSTING CURRENTLY UNAVAILABLE) Pokendex is a Ruby on Rails app acting as a web-based Pokedex. Users can view and examine information regarding the 1025 Pokemon that exist within the series.", link: "https://github.com/RyanGormican/Pokendex"},
