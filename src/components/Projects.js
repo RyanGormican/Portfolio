@@ -45,7 +45,6 @@ switch(tag){
     return "gold";
 
 }
-
 };
     const projects = [
 	{name: Searchimization, title:"Searchimization" , description: "Searchimization is a Next.js web application. Inspired by the NYT game of 'Strands', users can create their word search puzzles and share them for people to play.", link: "https://searchimization.vercel.app/"},
