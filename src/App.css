@@ -107,6 +107,7 @@ width: 100%;
 .item {
 	display: inline;
 	display: flex;
+	z-index:9;
 }
 
 .item:last-child {
