@@ -15,18 +15,7 @@ function App() {
       <p className="title">
       Ryan Gormican's Portfolio
       </p>
-   </div>
-    <div className ="button-container">
-    <div> 
-    <Button style= {{color: 'white', fontFamily: 'Jost',textAlign: 'center'}}  onClick={() => setView('projects')} variant = "text"> Projects </Button>
-    </div>
-    <div> 
-
-    </div>
-    <div className="links-container">
-     <Container maxWidth="sm" >
-         <div className="row">
-    <div className="item">
+       <div className="item">
         <a href="https://www.linkedin.com/in/ryangormican/">
             <Icon icon="mdi:linkedin" color="#0e76a8" width="50" />
         </a>
@@ -34,11 +23,9 @@ function App() {
             <Icon icon="mdi:github" color="#e8eaea" width="50" />
         </a>
     </div>
-        </div>
-        
-      </Container>
-    </div>
-     </div>
+
+   </div>
+   
      <div className="content-container">
      {view === 'home' ? (
      <p className= "title">

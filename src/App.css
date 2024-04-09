@@ -36,7 +36,7 @@
 *{
 	font-family: 'Jost', sans-serif;
 }
-/* Style for the button container */
+
 .button-container {
   position: fixed;
   top: 10vh; /* Adjust the top margin based on the title container's height */
@@ -72,7 +72,7 @@ bottom:0;
   position: fixed;
 
   top: 10vh;
-  width: 90%; 
+  width: 100%; 
   height: 90vh;
   background-color: #282c34;
   z-index:0;
