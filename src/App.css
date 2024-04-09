@@ -9,6 +9,7 @@
   padding-left: 5vw;
   position: fixed;
   z-index: 1;
+  padding-left:200px;
 }
 .complete-row {
   text-decoration: underline;
