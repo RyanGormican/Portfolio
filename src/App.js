@@ -6,9 +6,14 @@ import Contact from './components/Contact';
 import React, { useState} from 'react';
 import Suggestions from './components/Suggestions';
 import Projects from './components/Projects';
+import Feedback from './components/Feedback';
 function App() {
 	
  const [view, setView] = useState('projects');
+  const handleViewChange = (newView) => {
+    setView(newView);
+  };
+
   return (
     <div className="App" >
     <div className="title-container">
@@ -25,7 +30,10 @@ function App() {
     </div>
 
    </div>
-   
+    <div className="buttons">
+      <Button style={{ color: 'white' }} onClick={() => handleViewChange('projects')}> Projects </Button>
+        <Button style={{ color: 'white' }} onClick={() => handleViewChange('feedback')}> Feedback </Button>
+    </div>   
      <div className="content-container">
      {view === 'home' ? (
      <p className= "title">
@@ -40,6 +48,9 @@ function App() {
  ) : null }
  {view === 'contact' ? (
  <Contact />
+ ) : null }
+  {view === 'feedback' ? (
+ <Feedback />
  ) : null }
         </div>
 
