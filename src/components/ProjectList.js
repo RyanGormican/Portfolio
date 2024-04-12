@@ -16,8 +16,13 @@ import Pokendex from '../images/Pokendex.png'
 import KanbanKeeper from '../images/KanbanKeeper.png'
 import IdleCubicle from '../images/IdleCubicle.png'
 import Searchimization from '../images/Searchimization.png'
-
+import EntertainmentEndevors from '../images/Searchimization.png'
 export  const projects = [
+	{name:EntertainmentEndevors,
+	title: "EntertainmentEndevors",
+	description:"EntertainmentEndevors is a Next.js web application. Users can browse and filter to determine upcoming media releases that fit their select viewing criteria."
+	link:"https://entertainmentendevors.vercel.app/"
+	}
 	{name: Searchimization, 
 	title:"Searchimization", 
 	description: "Searchimization is a Next.js web application. Users can create their word search puzzles and share them for people to play.", 
