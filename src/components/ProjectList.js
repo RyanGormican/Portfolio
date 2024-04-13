@@ -16,7 +16,7 @@ import Pokendex from '../images/Pokendex.png'
 import KanbanKeeper from '../images/KanbanKeeper.png'
 import IdleCubicle from '../images/IdleCubicle.png'
 import Searchimization from '../images/Searchimization.png'
-import EntertainmentEndevors from '../images/Searchimization.png'
+import EntertainmentEndevors from '../images/EntertainmentEndevors.png'
 export  const projects = [
 	{name:EntertainmentEndevors,
 	title: "EntertainmentEndevors",

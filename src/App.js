@@ -35,20 +35,9 @@ function App() {
         <Button style={{ color: 'white' }} onClick={() => handleViewChange('feedback')}> Feedback </Button>
     </div>   
      <div className="content-container">
-     {view === 'home' ? (
-     <p className= "title">
-     Welcome!
-     </p> 
-     ) : null }
      {view === 'projects' ? (
 	 <Projects />
     ) : null }
- {view === 'suggestions' ? (
- <Suggestions />
- ) : null }
- {view === 'contact' ? (
- <Contact />
- ) : null }
   {view === 'feedback' ? (
  <Feedback />
  ) : null }

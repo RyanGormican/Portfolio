@@ -58,17 +58,21 @@ export default function Projects() {
                 </div>
               </a>
             </Grid>
-            <Grid item xs={6}>
-              <Typography variant="body1" style={{ color: 'white', fontSize: '2vw' }}>
-                {featuredProject.description}
-                <br />
-                {featuredProject.tags.map((tag, index) => (
-                  <Tag key={index} color={getColor(tag)} style={{ color: 'black' }}>
-                    {tag}
-                  </Tag>
-                ))}
-              </Typography>
-            </Grid>
+<Grid item xs={6}>
+    <div style={{ color: 'white', fontSize: '2vw', lineHeight: '1.2' }} >
+      {featuredProject.description}
+    </div>
+    <br />
+    <div style={{ marginTop: '-5px' }}>
+      {featuredProject.tags.map((tag, index) => (
+        <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
+          {tag}
+        </Tag>
+      ))}
+    </div>
+</Grid>
+
+
           </Grid>
         </div>
       )}
@@ -78,15 +82,15 @@ export default function Projects() {
           width: '80%',
           margin: '0 auto',
           display: 'flex',
-          flexDirection: 'row',
+          justifyContent: 'center',
           border: '1px solid white',
         }}
       >
         <Carousel style={{ color: 'white', maxHeight: '40vh', maxWidth: '80vw'}} autoplay>
           {otherProjects.map((project, index) => (
             <div key={index}>
-              <div style={{ flex: 'auto', flexDirection: 'row' }}>
-                <div style={{ width: '100%' }}>
+              <Grid container spacing={0.5}>
+                <Grid item xs={12}>
                   <Tooltip title={project.description} style={{ fontFamily: 'Jost' }}>
                     <a
                       href={project.link}
@@ -101,11 +105,12 @@ export default function Projects() {
                         }
                       }}
                     >
-                      <img src={project.name} style={{ width: '80vw', height: '40vh'}} alt={`index-${index}`} />
+                      <img src={project.name} style={{ width: '100%', height: '40vh'}} alt={`index-${index}`} />
                     </a>
                   </Tooltip>
-                </div>
-              </div>
+                </Grid>
+           
+              </Grid>
             </div>
           ))}
         </Carousel>
