@@ -82,15 +82,15 @@ export default function Projects() {
           width: '80%',
           margin: '0 auto',
           display: 'flex',
-          justifyContent: 'center',
+          flexDirection: 'row',
           border: '1px solid white',
         }}
       >
         <Carousel style={{ color: 'white', maxHeight: '40vh', maxWidth: '80vw'}} autoplay>
           {otherProjects.map((project, index) => (
             <div key={index}>
-              <Grid container spacing={0.5}>
-                <Grid item xs={12}>
+              <div style={{ flex: 'auto', flexDirection: 'row' }}>
+                <div style={{ width: '100%' }}>
                   <Tooltip title={project.description} style={{ fontFamily: 'Jost' }}>
                     <a
                       href={project.link}
@@ -105,12 +105,11 @@ export default function Projects() {
                         }
                       }}
                     >
-                      <img src={project.name} style={{ width: '100%', height: '40vh'}} alt={`index-${index}`} />
+                      <img src={project.name} style={{ width: '80vw', height: '40vh'}} alt={`index-${index}`} />
                     </a>
                   </Tooltip>
-                </Grid>
-           
-              </Grid>
+                </div>
+              </div>
             </div>
           ))}
         </Carousel>
