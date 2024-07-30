@@ -17,6 +17,14 @@ export default function Projects() {
   const featuredProject = shuffledProjects.find((project) => project.link === featuredProjectLink);
   const otherProjects = shuffledProjects.filter((project) => project.link !== featuredProjectLink);
 
+  // Divide otherProjects into three sets
+  const chunkSize = Math.ceil(otherProjects.length / 3);
+  const otherProjectsSets = [
+    otherProjects.slice(0, chunkSize),
+    otherProjects.slice(chunkSize, chunkSize * 2),
+    otherProjects.slice(chunkSize * 2),
+  ];
+
   const trackLinkClick = (linkName) => {
     logEvent(analytics, 'project-click', {
       name: linkName,
@@ -58,62 +66,63 @@ export default function Projects() {
                 </div>
               </a>
             </Grid>
-<Grid item xs={6}>
-    <div style={{ color: 'white', fontSize: '2vw', lineHeight: '1.2' }} >
-      {featuredProject.description}
-    </div>
-    <br />
-    <div style={{ marginTop: '-5px' }}>
-      {featuredProject.tags.map((tag, index) => (
-        <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
-          {tag}
-        </Tag>
-      ))}
-    </div>
-</Grid>
-
-
+            <Grid item xs={6}>
+              <div style={{ color: 'white', fontSize: '2vw', lineHeight: '1.2' }}>
+                {featuredProject.description}
+              </div>
+              <br />
+              <div style={{ marginTop: '-5px' }}>
+                {featuredProject.tags.map((tag, index) => (
+                  <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
+                    {tag}
+                  </Tag>
+                ))}
+              </div>
+            </Grid>
           </Grid>
         </div>
       )}
-      {/* Other Projects Carousel */}
-      <div
-        style={{
-          width: '80%',
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'row',
-          border: '1px solid white',
-        }}
-      >
-        <Carousel style={{ color: 'white', maxHeight: '40vh', maxWidth: '80vw'}} autoplay>
-          {otherProjects.map((project, index) => (
-            <div key={index}>
-              <div style={{ flex: 'auto', flexDirection: 'row' }}>
-                <div style={{ width: '100%' }}>
-                  <Tooltip title={project.description} style={{ fontFamily: 'Jost' }}>
-                    <a
-                      href={project.link}
-                      onClick={(e) => {
-                        if (e.button === 0 || e.button === 1) {
-                          trackLinkClick(project.title);
-                        }
-                      }}
-                      onMouseDown={(e) => {
-                        if (e.button === 1) {
-                          trackLinkClick(project.title);
-                        }
-                      }}
-                    >
-                      <img src={project.name} style={{ width: '80vw', height: '40vh'}} alt={`index-${index}`} />
-                    </a>
-                  </Tooltip>
+      {/* Other Projects Carousels */}
+      {otherProjectsSets.map((projectsSet, setIndex) => (
+        <div
+          key={setIndex}
+          style={{
+            width: '80%',
+            margin: '20px auto',
+            display: 'flex',
+            flexDirection: 'row',
+            border: '1px solid white',
+          }}
+        >
+          <Carousel style={{ color: 'white', maxHeight: '40vh', maxWidth: '80vw' }} autoplay>
+            {projectsSet.map((project, index) => (
+              <div key={index}>
+                <div style={{ flex: 'auto', flexDirection: 'row' }}>
+                  <div style={{ width: '100%' }}>
+                    <Tooltip title={project.description} style={{ fontFamily: 'Jost' }}>
+                      <a
+                        href={project.link}
+                        onClick={(e) => {
+                          if (e.button === 0 || e.button === 1) {
+                            trackLinkClick(project.title);
+                          }
+                        }}
+                        onMouseDown={(e) => {
+                          if (e.button === 1) {
+                            trackLinkClick(project.title);
+                          }
+                        }}
+                      >
+                        <img src={project.name} style={{ width: '80vw', height: '40vh' }} alt={`index-${index}`} />
+                      </a>
+                    </Tooltip>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </Carousel>
-      </div>
+            ))}
+          </Carousel>
+        </div>
+      ))}
     </div>
   );
 }
