@@ -17,7 +17,13 @@ import KanbanKeeper from '../images/KanbanKeeper.png'
 import IdleCubicle from '../images/IdleCubicle.png'
 import Searchimization from '../images/Searchimization.png'
 import EntertainmentEndevors from '../images/EntertainmentEndevors.png'
+import UserUnit from '../images/UserUnit.png'
 export  const projects = [
+	{name:UserUnit,
+	title: "UserUnit",
+	description:"UserUnit is a front-end utility application designed with Next.js. Designed for a second monitor, UserUnit allows the user to make configurations of content containers to easily display and view content.",
+	link:"https://userunit.vercel.app/"
+	},
 	{name:EntertainmentEndevors,
 	title: "EntertainmentEndevors",
 	description:"EntertainmentEndevors is a Next.js web application. Users can browse and filter to determine upcoming media releases that fit their select viewing criteria.",
