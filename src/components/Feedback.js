@@ -62,7 +62,7 @@ function Feedback() {
             InputLabelProps={{ style: { color: 'white' } }}
           />
           <br />
-          <FormControl>
+          <FormControl style={{ minWidth: 200 }}>
             <InputLabel id="topic-label" style={{ color: 'white' }}>Topic</InputLabel>
             <Select
               labelId="topic-label"
