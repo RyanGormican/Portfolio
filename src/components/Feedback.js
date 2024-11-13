@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { database } from '../firebaseConfig';
 import { projects } from './ProjectList';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 
 function Feedback() {
   const [name, setName] = useState('Anonymous');
@@ -29,7 +29,7 @@ function Feedback() {
         topic: topic.trim(),
         suggestion: suggestion.trim(),
         timestamp: serverTimestamp(),
-         status: 'incomplete'
+        status: 'incomplete'
       });
       setName('Anonymous');
       setTopic('');
@@ -62,16 +62,24 @@ function Feedback() {
             InputLabelProps={{ style: { color: 'white' } }}
           />
           <br />
-          <TextField
-            label="Topic"
-            type="text"
-            name="topic"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            required
-            InputProps={{ style: { color: 'white' } }}
-            InputLabelProps={{ style: { color: 'white' } }}
-          />
+          <FormControl fullWidth>
+            <InputLabel id="topic-label" style={{ color: 'white' }}>Topic</InputLabel>
+            <Select
+              labelId="topic-label"
+              id="topic"
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              label="Topic"
+              required
+              style={{ color: 'white', backgroundColor: 'transparent' }}
+            >
+              <MenuItem value="">Select a topic</MenuItem>
+              {projects.map((project, index) => (
+                <MenuItem key={index} value={project.title}>{project.title}</MenuItem>
+              ))}
+              <MenuItem value="Other">Other</MenuItem>
+            </Select>
+          </FormControl>
           <br />
           <TextField
             label="Suggestion"
