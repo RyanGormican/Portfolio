@@ -39,11 +39,17 @@ function Feedback() {
     }
   };
 
+  // Sort the projects alphabetically by title
+  const sortedProjects = [...projects].sort((a, b) => a.title.localeCompare(b.title));
+
+  // Add 'Other' at the correct alphabetical position
+  const allOptions = [...sortedProjects, { title: 'Other' }].sort((a, b) => a.title.localeCompare(b.title));
+
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Want to see a project improved? Click one of the buttons to gauge interest in that project.</h1>
       <div>
-        {projects.map((project, index) => (
+        {sortedProjects.map((project, index) => (
           <button key={index} onClick={() => handleProjectClick(project.title)}>
             {project.title}
           </button>
@@ -74,10 +80,9 @@ function Feedback() {
               style={{ color: 'white', backgroundColor: 'transparent' }}
             >
               <MenuItem value="">Select a topic</MenuItem>
-              {projects.map((project, index) => (
+              {allOptions.map((project, index) => (
                 <MenuItem key={index} value={project.title}>{project.title}</MenuItem>
               ))}
-              <MenuItem value="Other">Other</MenuItem>
             </Select>
           </FormControl>
           <br />
