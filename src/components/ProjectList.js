@@ -22,7 +22,7 @@ import SheetWonder from '../images/SheetWonder.png'
 export  const projects = [
 	{name:SheetWonder,
 	title: "SheetWonder",
-	description:"SheetWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for them to use.",
+	description:"SheetWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for themself to use.",
 	link:"https://sheetwonder.vercel.app/"
 	},
 	{name:UserUnit,
