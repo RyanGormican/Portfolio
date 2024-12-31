@@ -18,7 +18,13 @@ import IdleCubicle from '../images/IdleCubicle.png'
 import Searchimization from '../images/Searchimization.png'
 import EntertainmentEndevors from '../images/EntertainmentEndevors.png'
 import UserUnit from '../images/UserUnit.png'
+import SheetWonder from '../images/SheetWonder.png'
 export  const projects = [
+	{name:SheetWonder,
+	title: "SheetWonder",
+	description:"SheetWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for them to use.",
+	link:"https://sheetwonder.vercel.app/"
+	},
 	{name:UserUnit,
 	title: "UserUnit",
 	description:"UserUnit is a front-end utility application designed with Next.js. Designed for a second monitor, UserUnit allows the user to make configurations of content containers to easily display and view content.",
