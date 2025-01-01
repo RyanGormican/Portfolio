@@ -19,10 +19,16 @@ import Searchimization from '../images/Searchimization.png'
 import EntertainmentEndevors from '../images/EntertainmentEndevors.png'
 import UserUnit from '../images/UserUnit.png'
 import SheetWonder from '../images/SheetWonder.png'
+import SheetWonder from '../images/SlideWonder.png'
 export  const projects = [
+	{name:SlideWonder,
+	title: "SlideWonder",
+	description:"SlideWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for themselves to use.",
+	link:"https://slidewonder.vercel.app/"
+	},
 	{name:SheetWonder,
 	title: "SheetWonder",
-	description:"SheetWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for themself to use.",
+	description:"SheetWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for themselves to use.",
 	link:"https://sheetwonder.vercel.app/"
 	},
 	{name:UserUnit,
@@ -43,7 +49,7 @@ export  const projects = [
 	{name: IdleCubicle, title:"IdleCubicle" , description: "IdleCubicle is a React.js idle game. Users manage a multitude of resources while completing objectives and milestones along the way.", link: "https://idlecubicle.vercel.app/"},
 	{name: KanbanKeeper, title:"KanbanKeeper" , description: "KanbanKeeper is a Vue.js web application. Users are able to keep track and manage their Kanban board by controlling the various properties pertaining to its cards and lists.", link: "https://kanbankeeper.vercel.app/"},
 	{name: Pokendex, title:"Pokendex" , description: "(HOSTING CURRENTLY UNAVAILABLE) Pokendex is a Ruby on Rails app acting as a web-based Pokedex. Users can view and examine information regarding the 1025 Pokemon that exist within the series.", link: "https://github.com/RyanGormican/Pokendex"},
-	{name: WordWonder, title:"WordWonder" , description: "WordWonder is a front-end word-processing app done with React.js. Users can use their textual input along with the given set of tools to produce a document for themself to use.", link: "https://wordwonder.vercel.app/"},
+	{name: WordWonder, title:"WordWonder" , description: "WordWonder is a front-end word-processing app done with React.js. Users can use their textual input along with the given set of tools to produce a document for themselves to use.", link: "https://wordwonder.vercel.app/"},
 	{name: SimplyCharts, title:"SimplyCharts" , description: "SimplyCharts is a lightweight React.js web application designed for generating charts. Users can use the onscreen controls to customize their charts. After pressing the button, the chart image gets generated using the QuickChart API.", link: "https://simplycharts.vercel.app/"},
 	{name: PaintersParadise, title:"PaintersParadise" , description: "PaintersParadise is a drawing app constructed using Vue.js. Users are able to construct their masterpiece on the canvas using the given design tools.", link: "https://paintersparadise.vercel.app/"},
         {name: TriviaTempo, title:"TriviaTempo" , description: "TriviaTempo is a fast-paced web-based trivia game built with React.js. Using The Trivia API, users are given a rapid fire of trivia questions from a variety of categories with 15 seconds to answer each one.", link: "https://triviatempo.vercel.app/"},
