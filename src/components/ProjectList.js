@@ -19,7 +19,7 @@ import Searchimization from '../images/Searchimization.png'
 import EntertainmentEndevors from '../images/EntertainmentEndevors.png'
 import UserUnit from '../images/UserUnit.png'
 import SheetWonder from '../images/SheetWonder.png'
-import SheetWonder from '../images/SlideWonder.png'
+import SlideWonder from '../images/SlideWonder.png'
 export  const projects = [
 	{name:SlideWonder,
 	title: "SlideWonder",
