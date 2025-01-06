@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Carousel } from 'antd';
-import Grid from '@mui/material/Grid';
 import { Tag } from 'antd';
 import { analytics } from '../firebaseConfig.js';
 import { logEvent } from 'firebase/analytics';
 import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 import { shuffle } from 'lodash';
 import { projects } from './ProjectList';
 import { getColor } from './Color';
@@ -17,112 +15,177 @@ export default function Projects() {
   const featuredProject = shuffledProjects.find((project) => project.link === featuredProjectLink);
   const otherProjects = shuffledProjects.filter((project) => project.link !== featuredProjectLink);
 
-  // Divide otherProjects into three sets
-  const chunkSize = Math.ceil(otherProjects.length / 3);
-  const otherProjectsSets = [
-    otherProjects.slice(0, chunkSize),
-    otherProjects.slice(chunkSize, chunkSize * 2),
-    otherProjects.slice(chunkSize * 2),
-  ];
+  // State to track current projects in carousels
+  const [currentProjects, setCurrentProjects] = useState(shuffle(otherProjects).slice(0, 8));
+  const [isHovered, setIsHovered] = useState(false); 
+
+  const carouselRefs = useRef([]);
+
+  // Function to get unique random projects
+  const getUniqueRandomProjects = (projects, count) => {
+    const availableProjects = shuffle(projects); // Shuffle projects
+    const selectedProjects = [];
+    const usedIndices = new Set();
+
+    while (selectedProjects.length < count && availableProjects.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableProjects.length);
+      if (!usedIndices.has(randomIndex)) {
+        usedIndices.add(randomIndex);
+        selectedProjects.push(availableProjects[randomIndex]);
+      }
+    }
+
+    return selectedProjects;
+  };
+
+  // Function to refresh the carousel projects ensuring uniqueness
+  const refreshCarousels = () => {
+    const newProjects = getUniqueRandomProjects(otherProjects, 8);
+    setCurrentProjects(newProjects);
+  };
 
   const trackLinkClick = (linkName) => {
-    logEvent(analytics, 'project-click', {
-      name: linkName,
-    });
+    logEvent(analytics, 'project-click', { name: linkName });
     logEvent(analytics, linkName);
   };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    // Pause all carousels when mouse enters
+    carouselRefs.current.forEach((carousel) => {
+      if (carousel) {
+        carousel.innerSlider.pause();
+      }
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    // Resume all carousels after 3 seconds when mouse leaves
+    setTimeout(() => {
+      carouselRefs.current.forEach((carousel) => {
+        if (carousel) {
+          carousel.innerSlider.play();
+        }
+      });
+    }, 3000);
+  };
+
   return (
-    <div>
-      {/* Featured Project */}
+    <div style={{ display: 'flex', width: '100vw', height: '80vh' }}>
+      {/* Left Section: 8 Project Carousels */}
+      <div
+        style={{
+          width: '60vw',
+          height: '80vh', 
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gridTemplateRows: '20vh 20vh 20vh 20vh',
+          gap: '0.75px',
+        }}
+        onMouseEnter={handleMouseEnter} 
+        onMouseLeave={handleMouseLeave} 
+      >
+        {currentProjects.map((project, carouselIndex) => (
+          <div
+            key={carouselIndex}
+            style={{
+              border: '1px solid white',
+              padding: '10px',
+              overflow: 'hidden',
+            }}
+          >
+            <Carousel
+              ref={(el) => (carouselRefs.current[carouselIndex] = el)} 
+              autoplay={!isHovered} 
+              afterChange={refreshCarousels}
+              style={{ color: 'white' }}
+            >
+              <div>
+                <Tooltip title={project.description}>
+                  <a
+                    href={project.link}
+                    onClick={(e) => {
+                      if (e.button === 0 || e.button === 1) {
+                        trackLinkClick(project.title);
+                      }
+                    }}
+                    onMouseDown={(e) => {
+                      if (e.button === 1) {
+                        trackLinkClick(project.title);
+                      }
+                    }}
+                  >
+                    <img
+                      src={project.name}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        borderRadius: '8px',
+                      }}
+                      alt={project.title}
+                    />
+                  </a>
+                </Tooltip>
+              </div>
+            </Carousel>
+          </div>
+        ))}
+      </div>
+
+      {/* Right Section: Featured Project */}
       {featuredProject && (
         <div
           style={{
-            width: '80%',
-            margin: '0 auto',
-            display: 'flex',
-            justifyContent: 'center',
+            width: '50vw',
+            height: '80vh', 
             border: '1px solid white',
-            padding: 0,
+            marginLeft: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
           }}
         >
-          <Grid container spacing={0.5}>
-            <Grid item xs={6}>
-              <a
-                href={featuredProject.link}
-                onClick={(e) => {
-                  if (e.button === 0 || e.button === 1) {
-                    trackLinkClick(featuredProject.title);
-                  }
+       
+            <div style={{ height: '60vh', width: '100%' }}>
+               <a
+            href={featuredProject.link}
+            onClick={(e) => {
+              if (e.button === 0 || e.button === 1) {
+                trackLinkClick(featuredProject.title);
+              }
+            }}
+            onMouseDown={(e) => {
+              if (e.button === 1) {
+                trackLinkClick(featuredProject.title);
+              }
+            }}
+            style={{ textAlign: 'center', display: 'block', width: '100%', height: '100%' }}
+          >
+              <img
+                src={featuredProject.name}
+                style={{
+                  width: '100%',
+                  height: '100%',
                 }}
-                onMouseDown={(e) => {
-                  if (e.button === 1) {
-                    trackLinkClick(featuredProject.title);
-                  }
-                }}
-              >
-                <div style={{ maxHeight: '50vh', maxWidth: '80vw' }}>
-                  <img src={featuredProject.name} width="100%" height="50%" alt={featuredProject.title} />
-                </div>
-              </a>
-            </Grid>
-            <Grid item xs={6}>
-              <div style={{ color: 'white', fontSize: '2vw', lineHeight: '1.2' }}>
-                {featuredProject.description}
-              </div>
-              <br />
-              <div style={{ marginTop: '-5px' }}>
-                {featuredProject.tags.map((tag, index) => (
-                  <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
-                    {tag}
-                  </Tag>
-                ))}
-              </div>
-            </Grid>
-          </Grid>
+                alt={featuredProject.title}
+              />
+                   </a>
+            </div>
+            <div style={{ color: 'white', fontSize: '1.5vw', lineHeight: '1.4', marginTop: '10px' }}>
+              {featuredProject.description}
+            </div>
+            <div style={{ marginTop: '10px' }}>
+              {featuredProject.tags.map((tag, index) => (
+                <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
+                  {tag}
+                </Tag>
+              ))}
+            </div>
+     
         </div>
       )}
-      {/* Other Projects Carousels */}
-      {otherProjectsSets.map((projectsSet, setIndex) => (
-        <div
-          key={setIndex}
-          style={{
-            width: '80%',
-            margin: '20px auto',
-            display: 'flex',
-            flexDirection: 'row',
-            border: '1px solid white',
-          }}
-        >
-          <Carousel style={{ color: 'white', maxHeight: '40vh', maxWidth: '80vw' }} autoplay>
-            {projectsSet.map((project, index) => (
-              <div key={index}>
-                <div style={{ flex: 'auto', flexDirection: 'row' }}>
-                  <div style={{ width: '100%' }}>
-                    <Tooltip title={project.description} style={{ fontFamily: 'Jost' }}>
-                      <a
-                        href={project.link}
-                        onClick={(e) => {
-                          if (e.button === 0 || e.button === 1) {
-                            trackLinkClick(project.title);
-                          }
-                        }}
-                        onMouseDown={(e) => {
-                          if (e.button === 1) {
-                            trackLinkClick(project.title);
-                          }
-                        }}
-                      >
-                        <img src={project.name} style={{ width: '80vw', height: '40vh' }} alt={`index-${index}`} />
-                      </a>
-                    </Tooltip>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      ))}
     </div>
   );
 }
