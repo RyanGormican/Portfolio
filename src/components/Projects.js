@@ -4,45 +4,28 @@ import { Tag } from 'antd';
 import { analytics } from '../firebaseConfig.js';
 import { logEvent } from 'firebase/analytics';
 import Tooltip from '@mui/material/Tooltip';
-import { shuffle } from 'lodash';
 import { projects } from './ProjectList';
 import { getColor } from './Color';
 
 export default function Projects() {
   const featuredProjectLink = 'https://searchimization.vercel.app/';
-  const shuffledProjects = shuffle(projects);
 
-  const featuredProject = shuffledProjects.find((project) => project.link === featuredProjectLink);
-  const otherProjects = shuffledProjects.filter((project) => project.link !== featuredProjectLink);
+  const featuredProject = projects.find((project) => project.link === featuredProjectLink);
+  const otherProjects = projects.filter((project) => project.link !== featuredProjectLink);
 
   // State to track current projects in carousels
-  const [currentProjects, setCurrentProjects] = useState(shuffle(otherProjects).slice(0, 8));
-  const [isHovered, setIsHovered] = useState(false); 
+  const [currentProjects, setCurrentProjects] = useState(
+    // Split the remaining projects into 8 carousels
+    Array.from({ length: 8 }, (_, index) => {
+      const startIndex = (index * Math.floor(otherProjects.length / 8));
+      const endIndex = startIndex + Math.floor(otherProjects.length / 8);
+      return otherProjects.slice(startIndex, endIndex);
+    })
+  );
+  
+  const [isHovered, setIsHovered] = useState(false);
 
   const carouselRefs = useRef([]);
-
-  // Function to get unique random projects
-  const getUniqueRandomProjects = (projects, count) => {
-    const availableProjects = shuffle(projects); // Shuffle projects
-    const selectedProjects = [];
-    const usedIndices = new Set();
-
-    while (selectedProjects.length < count && availableProjects.length > 0) {
-      const randomIndex = Math.floor(Math.random() * availableProjects.length);
-      if (!usedIndices.has(randomIndex)) {
-        usedIndices.add(randomIndex);
-        selectedProjects.push(availableProjects[randomIndex]);
-      }
-    }
-
-    return selectedProjects;
-  };
-
-  // Function to refresh the carousel projects ensuring uniqueness
-  const refreshCarousels = () => {
-    const newProjects = getUniqueRandomProjects(otherProjects, 8);
-    setCurrentProjects(newProjects);
-  };
 
   const trackLinkClick = (linkName) => {
     logEvent(analytics, 'project-click', { name: linkName });
@@ -77,7 +60,7 @@ export default function Projects() {
       <div
         style={{
           width: '60vw',
-          height: '80vh', 
+          height: '80vh',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gridTemplateRows: '20vh 20vh 20vh 20vh',
@@ -86,7 +69,7 @@ export default function Projects() {
         onMouseEnter={handleMouseEnter} 
         onMouseLeave={handleMouseLeave} 
       >
-        {currentProjects.map((project, carouselIndex) => (
+        {currentProjects.map((carouselProjects, carouselIndex) => (
           <div
             key={carouselIndex}
             style={{
@@ -97,38 +80,39 @@ export default function Projects() {
           >
             <Carousel
               ref={(el) => (carouselRefs.current[carouselIndex] = el)} 
-              autoplay={!isHovered} 
-              afterChange={refreshCarousels}
+              autoplay={!isHovered}
               style={{ color: 'white' }}
             >
-              <div>
-                <Tooltip title={project.description}>
-                  <a
-                    href={project.link}
-                    onClick={(e) => {
-                      if (e.button === 0 || e.button === 1) {
-                        trackLinkClick(project.title);
-                      }
-                    }}
-                    onMouseDown={(e) => {
-                      if (e.button === 1) {
-                        trackLinkClick(project.title);
-                      }
-                    }}
-                  >
-                    <img
-                      src={project.name}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
+              {carouselProjects.map((project, index) => (
+                <div key={index}>
+                  <Tooltip title={project.description}>
+                    <a
+                      href={project.link}
+                      onClick={(e) => {
+                        if (e.button === 0 || e.button === 1) {
+                          trackLinkClick(project.title);
+                        }
                       }}
-                      alt={project.title}
-                    />
-                  </a>
-                </Tooltip>
-              </div>
+                      onMouseDown={(e) => {
+                        if (e.button === 1) {
+                          trackLinkClick(project.title);
+                        }
+                      }}
+                    >
+                      <img
+                        src={project.name}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '8px',
+                        }}
+                        alt={project.title}
+                      />
+                    </a>
+                  </Tooltip>
+                </div>
+              ))}
             </Carousel>
           </div>
         ))}
@@ -147,22 +131,21 @@ export default function Projects() {
             alignItems: 'flex-start',
           }}
         >
-       
-            <div style={{ height: '60vh', width: '100%' }}>
-               <a
-            href={featuredProject.link}
-            onClick={(e) => {
-              if (e.button === 0 || e.button === 1) {
-                trackLinkClick(featuredProject.title);
-              }
-            }}
-            onMouseDown={(e) => {
-              if (e.button === 1) {
-                trackLinkClick(featuredProject.title);
-              }
-            }}
-            style={{ textAlign: 'center', display: 'block', width: '100%', height: '100%' }}
-          >
+          <div style={{ height: '60vh', width: '100%' }}>
+            <a
+              href={featuredProject.link}
+              onClick={(e) => {
+                if (e.button === 0 || e.button === 1) {
+                  trackLinkClick(featuredProject.title);
+                }
+              }}
+              onMouseDown={(e) => {
+                if (e.button === 1) {
+                  trackLinkClick(featuredProject.title);
+                }
+              }}
+              style={{ textAlign: 'center', display: 'block', width: '100%', height: '100%' }}
+            >
               <img
                 src={featuredProject.name}
                 style={{
@@ -171,19 +154,18 @@ export default function Projects() {
                 }}
                 alt={featuredProject.title}
               />
-                   </a>
-            </div>
-            <div style={{ color: 'white', fontSize: '1.5vw', lineHeight: '1.4', marginTop: '10px' }}>
-              {featuredProject.description}
-            </div>
-            <div style={{ marginTop: '10px' }}>
-              {featuredProject.tags.map((tag, index) => (
-                <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
-                  {tag}
-                </Tag>
-              ))}
-            </div>
-     
+            </a>
+          </div>
+          <div style={{ color: 'white', fontSize: '1.5vw', lineHeight: '1.4', marginTop: '10px' }}>
+            {featuredProject.description}
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            {featuredProject.tags.map((tag, index) => (
+              <Tag key={index} color={getColor(tag)} style={{ color: 'black', margin: '2px' }}>
+                {tag}
+              </Tag>
+            ))}
+          </div>
         </div>
       )}
     </div>
