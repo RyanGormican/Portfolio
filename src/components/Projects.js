@@ -48,7 +48,7 @@ export default function Projects() {
     setTimeout(() => {
       carouselRefs.current.forEach((carousel) => {
         if (carousel) {
-          carousel.innerSlider.play();
+           carousel.next();
         }
       });
     }, 3000);
