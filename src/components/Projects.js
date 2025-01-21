@@ -8,7 +8,7 @@ import { projects } from './ProjectList';
 import { getColor } from './Color';
 
 export default function Projects() {
-  const featuredProjectLink = 'https://searchimization.vercel.app/';
+  const featuredProjectLink = 'https://slidewonder.vercel.app/';
 
   const featuredProject = projects.find((project) => project.link === featuredProjectLink);
   const otherProjects = projects.filter((project) => project.link !== featuredProjectLink);
