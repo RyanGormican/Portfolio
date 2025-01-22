@@ -23,7 +23,7 @@ import SlideWonder from '../images/SlideWonder.png'
 export  const projects = [
 	{name:SlideWonder,
 	title: "SlideWonder",
-	description:"SlideWonder is a front-end spreadsheet app done with React.js. Users can use their textual input along with the given set of tools to produce a spreadsheet for themselves to use.",
+	description:"SlideWonder is a front-end slideshow app done with React.js. Users can use their textual input along with the given set of tools to produce a presentation for themselves to use.",
 	link:"https://slidewonder.vercel.app/",
 tags: ["Analytical Skills", "Cascading Style Sheets (CSS)", "Fabric.js", "Front-End Development", "Git", "GitHub", "HTML", "JavaScript", "Material-UI", "Problem Solving", "React.js", "Responsive Web Design", "Software Architecture", "Software Design Patterns", "Software Testing", "User Experience (UX)", "User Experience Design (UED)", "Web Applications", "Web Design", "Web Development", "Web Framework"]
 
