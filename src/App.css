@@ -4,7 +4,7 @@
   color: white;
   font-size: calc(10px + 2vmin);
   font-style: italic;
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
   width: 100vw;
   padding-left: 5vw;
   position: fixed;
@@ -40,10 +40,10 @@
 
 .button-container {
   position: fixed;
-  top: 10vh; /* Adjust the top margin based on the title container's height */
+  top: 10vh; 
   left: 0;
   width: 10%;
-  height: 90vh; /* Adjust the height based on the title container's height */
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -164,4 +164,50 @@ form{
 }
 .ant-tooltip-inner {
   font-family: 'Titillium Web', serif !important;
+}
+.circle-container {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  display: flex;
+  gap: 1.1vw;
+  z-index: 5; 
+  animation: moveCircles 10s infinite  ease-in-out;
+}
+
+.circle {
+  width: 2vw;
+  height: 2vw;
+  background-color: #f39c12;
+  border-radius: 50%;
+  animation: moveCircle 2s infinite ease-in-out;
+}
+
+.circle:nth-child(even) {
+  animation-delay: 1s;
+}
+
+
+
+/* Circle movement animation */
+@keyframes moveCircles {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(100vw); /* Move circles to the right */
+  }
+}
+
+
+@keyframes moveCircle {
+  0% {
+    transform: translateY(2vh);
+  }
+  50% {
+    transform: translateY(-2vh); /* Bounce effect */
+  }
+  100% {
+    transform: translateY(2vh);
+  }
 }

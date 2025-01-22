@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { database } from '../firebaseConfig';
 import { projects } from './ProjectList';
-import { Button, TextField, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
+import { Button, TextField, MenuItem, Select, InputLabel, FormControl, Box } from '@mui/material';
 
 function Feedback() {
   const [name, setName] = useState('Anonymous');
@@ -46,16 +46,31 @@ function Feedback() {
   const allOptions = [...sortedProjects, { title: 'Other' }].sort((a, b) => a.title.localeCompare(b.title));
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <Box sx={{ textAlign: 'center', padding: '20px', backgroundColor: '#333', borderRadius: '8px', color: 'white' }}>
       <h1>Want to see a project improved? Click one of the buttons to gauge interest in that project.</h1>
-      <div>
+      
+      {/* Project Buttons Section */}
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2 }}>
         {sortedProjects.map((project, index) => (
-          <button key={index} onClick={() => handleProjectClick(project.title)}>
+          <Button
+            key={index}
+            onClick={() => handleProjectClick(project.title)}
+            variant="contained"
+            sx={{
+              backgroundColor: '#007BFF',
+              '&:hover': {
+                backgroundColor: '#0056b3'
+              },
+              padding: '10px 20px',
+            }}
+          >
             {project.title}
-          </button>
+          </Button>
         ))}
-      </div>
-      <div className="form">
+      </Box>
+
+      {/* Suggestion Form Section */}
+      <div className="form" style={{ marginTop: '20px' }}>
         <h2>Leave a Suggestion</h2>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -66,9 +81,10 @@ function Feedback() {
             onChange={(e) => setName(e.target.value)}
             InputProps={{ style: { color: 'white' } }}
             InputLabelProps={{ style: { color: 'white' } }}
+            sx={{ width: '100%',  border: '1px solid white',  marginBottom: 2 }}
           />
-          <br />
-          <FormControl style={{ minWidth: 200 }}>
+          
+          <FormControl fullWidth sx={{ marginBottom: 2 }}>
             <InputLabel id="topic-label" style={{ color: 'white' }}>Topic</InputLabel>
             <Select
               labelId="topic-label"
@@ -77,7 +93,7 @@ function Feedback() {
               onChange={(e) => setTopic(e.target.value)}
               label="Topic"
               required
-              style={{ color: 'white', backgroundColor: 'transparent' }}
+              style={{ color: 'white', border: '1px solid white', backgroundColor: 'transparent' }}
             >
               <MenuItem value="">Select a topic</MenuItem>
               {allOptions.map((project, index) => (
@@ -85,7 +101,7 @@ function Feedback() {
               ))}
             </Select>
           </FormControl>
-          <br />
+          
           <TextField
             label="Suggestion"
             type="text"
@@ -95,14 +111,24 @@ function Feedback() {
             required
             InputProps={{ style: { color: 'white' } }}
             InputLabelProps={{ style: { color: 'white' } }}
+            sx={{  border: '1px solid white',  width: '100%', marginBottom: 2 }}
           />
-          <br />
-          <Button variant="contained" color="primary" type="submit">
+          
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            sx={{
+              padding: '10px 20px',
+              backgroundColor: '#28a745',
+              '&:hover': { backgroundColor: '#218838' },
+            }}
+          >
             Submit
           </Button>
         </form>
       </div>
-    </div>
+    </Box>
   );
 }
 
