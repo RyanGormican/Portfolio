@@ -21,6 +21,13 @@ import UserUnit from '../images/UserUnit.png'
 import SheetWonder from '../images/SheetWonder.png'
 import SlideWonder from '../images/SlideWonder.png'
 export  const projects = [
+	{
+  name: "CryptoContemplate",
+  title: "CryptoContemplate",
+  description: "CryptoContemplate is an interactive, real-time cryptocurrency dashboard built with Svelte and Vite. The app fetches data using Representation State Transfer (REST), providing users with up-to-date information about various crypto assets, including their price, market cap, supply, and 24-hour changes.",
+  link: "https://github.com/RyanGormican/CryptoContemplate",
+  tags: ["REST APIs", "Bootstrap", "Web Development", "TypeScript", "JavaScript", "HTML", "Cascading Style Sheets (CSS)", "Front-End Development", "Web Application Design", "Git", "GitHub", "Svelte", "Vite"]
+},
 	{name:SlideWonder,
 	title: "SlideWonder",
 	description:"SlideWonder is a full-stack slideshow app done with React.js. Users can use their textual input along with the given set of tools to produce a presentation for themselves to use.",
