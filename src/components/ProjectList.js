@@ -25,7 +25,7 @@ export  const projects = [
   name: "CryptoContemplate",
   title: "CryptoContemplate",
   description: "CryptoContemplate is an interactive, real-time cryptocurrency dashboard built with Svelte and Vite. The app fetches data using Representation State Transfer (REST), providing users with up-to-date information about various crypto assets, including their price, market cap, supply, and 24-hour changes.",
-  link: "https://github.com/RyanGormican/CryptoContemplate",
+  link: "https://cryptocontemplate.vercel.app/",
   tags: ["REST APIs", "Bootstrap", "Web Development", "TypeScript", "JavaScript", "HTML", "Cascading Style Sheets (CSS)", "Front-End Development", "Web Application Design", "Git", "GitHub", "Svelte", "Vite"]
 },
 	{name:SlideWonder,
