@@ -20,7 +20,14 @@ import EntertainmentEndevors from '../images/EntertainmentEndevors.png'
 import UserUnit from '../images/UserUnit.png'
 import SheetWonder from '../images/SheetWonder.png'
 import SlideWonder from '../images/SlideWonder.png'
+import SimplyDictionary from '../images/SimplyDictionary.png'
 export  const projects = [
+{
+  name: "SimplyDictionary",
+  title: "SimplyDictionary",
+  description: "SimplyDictionary is a front-end lightweight web application built with Astro. SimplyDictionary allows the user to fetch and retrieve definitions of a word using an API call.",
+  link: "https://simplydictionary.vercel.app/",
+},
 	{
   name: "CryptoContemplate",
   title: "CryptoContemplate",
@@ -30,9 +37,9 @@ export  const projects = [
 },
 	{name:SlideWonder,
 	title: "SlideWonder",
-	description:"SlideWonder is a full-stack slideshow app done with React.js. Users can use their textual input along with the given set of tools to produce a presentation for themselves to use.",
+	description:"SlideWonder is a full-stack slideshow app done with Next.js. Users can use their textual input along with the given set of tools to produce a presentation for themselves to use.",
 	link:"https://slidewonder.vercel.app/",
-tags: ["Analytical Skills", "Cascading Style Sheets (CSS)", "Databases", "Fabric.js", "Firebase", "Front-End Development", "Full-Stack Development", "Git", "GitHub", "HTML", "JavaScript", "Material-UI", "Problem Solving", "React.js", "Responsive Web Design", "Software Architecture", "Software Design Patterns", "Software Testing", "User Experience (UX)", "User Experience Design (UED)", "Web Applications", "Web Design", "Web Development", "Web Framework"]
+tags: ["Analytical Skills", "Cascading Style Sheets (CSS)", "Databases", "Fabric.js", "Firebase", "Front-End Development", "Full-Stack Development", "Git", "GitHub", "HTML", "JavaScript", "Material-UI", "Next.js", "Problem Solving", "React.js", "Responsive Web Design", "Software Architecture", "Software Design Patterns", "Software Testing", "User Experience (UX)", "User Experience Design (UED)", "Web Applications", "Web Design", "Web Development", "Web Framework"]
 
 	},
 	{name:SheetWonder,
